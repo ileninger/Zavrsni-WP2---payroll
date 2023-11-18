@@ -53,4 +53,5 @@ IznosIsplate decimal (18,2) not null
 alter table Obracun add foreign key (Radnik) references Radnici (radnikId);
 alter table Odbici add foreign key (OsnovicaZaObracun) references Obracun(IznosObracuna);
 alter table Placa add foreign key (IznosPlace) references Obracun(IznosObracuna);
+alter table Placa add foreign key (IznosOdbitaka) references Odbici(UkupniOdbici);
 alter table Isplata add foreign key (IznosIsplate) references Placa(IznosIsplate);
