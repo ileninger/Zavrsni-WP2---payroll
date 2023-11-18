@@ -34,7 +34,7 @@ create table Odbici (
 OdbiciId int not null primary key identity (1,1),
 Radnik int not null,
 UkupniOdbici decimal (18,2) not null,
-OsnovicaZaObracun decimal(18,2) not null,
+OsnovicaZaObracun decimal(18,2),
 MiO_I decimal (18,2),
 MiO_II decimal (18,2),
 PorezNaDohodak decimal (18,2)
