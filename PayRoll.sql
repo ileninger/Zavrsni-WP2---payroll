@@ -62,10 +62,3 @@ alter table Isplata add foreign key (Radnik) references Radnici (radnikId);
 alter table Placa add foreign key (ObracunSatiId) references ObracunRadnihSati(ObracunId);
 alter table Placa add foreign key (OdbiciId) references Odbici(OdbiciId);
 alter table Isplata add foreign key (PlacaId) references Placa(PlacaId);
-
---alter table Odbici add foreign key (OsnovicaZaObracun) references ObracunRadnihSati(IznosObracuna);
-
-
---alter table Placa add foreign key (IznosPlace) references ObracunRadnihSati(IznosObracuna);
---alter table Placa add foreign key (IznosOdbitaka) references Odbici(UkupniOdbici);
---alter table Isplata add foreign key (IznosIsplate) references Placa(IznosIsplate);
