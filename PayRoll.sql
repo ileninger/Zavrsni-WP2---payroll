@@ -10,29 +10,40 @@ go
 use Payroll;
 
 
-create table radnici (
-sifra int not null primary key identity (1,1),
-ime varchar (50) not null,
-prezime varchar (50) not null,
-iban varchar (50) not null,
-zaposlenOd date not null
+create table Radnici (
+radnikId int not null primary key identity (1,1),
+Ime varchar (50) not null,
+Prezime varchar (50) not null,
+DatumZaposlenja date,
+IBAN varchar (50) not null,
+OiB char (11) not null
 );
 
-create table placa (
-sifra int not null primary key identity (1,1),
-radnik int not null,
-naziv varchar (50) not null,
-obracunskoRazdoblje date not null,
-isplata int
+create table Obracun (
+ObracunId int not null primary key identity (1,1),
+DatumObracuna date not null,
+BrojRadnihSati int not null,
+CijenaRadnogSata decimal (18,2) not null,
+IznosObracuna decimal (18,2) not null
 );
 
-create table iznosZaIsplatu(
-bruto decimal (18,2) not null,
-neto decimal (18,2) not null,
-dodaci decimal (18,2) not null,
-obustave decimal (18,2) not null,
-ukupanIznosZaIsplatu int
+create table Odbici (
+OdbiciId int not null primary key identity (1,1),
+UkupniOdbici decimal (18,2) not null,
+OsnovicaZaObracun decimal (18,2) not null,
+MiO_I decimal (18,2),
+MiO_II decimal (18,2),
+PorezNaDohodak decimal (18,2)
 );
 
-alter table placa add foreign key (radnik) references radnici (sifra);
-alter table placa add foreign key (isplata) references  iznosZaIsplatu (ukupanIznosZaIsplatu);
+create table Placa (
+Radnik int not null primary key,
+IznosPlace decimal (18,2) not null,
+Odbici decimal (18,2) not null,
+Isplata decimal (18,2) not null
+);
+
+create table Isplata  (
+IsplataId int not null primary key identity (1,1),
+IznosIsplate decimal (18,2) not null
+);
