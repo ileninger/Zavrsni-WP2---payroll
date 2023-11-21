@@ -13,7 +13,7 @@ use Payroll;
 
 
 create table Radnici (
-RadnikId int not null primary key identity (1,1),
+Radnik_Id int not null primary key identity (1,1),
 Ime varchar (50) not null,
 Prezime varchar (50) not null,
 DatumZaposlenja date,
@@ -22,12 +22,15 @@ OiB char (11) not null
 );
 
 create table ObracunPlace (
-ObracunId int not null primary key identity (1,1),
+Obracun_Id int not null primary key identity (1,1),
 Radnik int not null,
 DatumObracuna date not null,
 BrojRadnihSati int not null,
 CijenaRadnogSata decimal (18,2) not null,
-IznosObracuna decimal(18,2) not null
+Bruto decimal(18,2) not null,
+Bruto_I decimal(18,2) not null,
+Bruto_II decimal (18,2)  not null,
+Neto_IznosZaIsplatu decimal (18,2) not null
 );
 
 --create table Odbici (
@@ -41,25 +44,21 @@ IznosObracuna decimal(18,2) not null
 --);
 
 create table Place (
-PlacaId int not null primary key identity (1,1),
-ObracunSatiId int not null,
-OdbiciId int not null,
---IznosPlace decimal (18,2) not null,
---IznosOdbitaka decimal (18,2) not null,
+Placa_Id int not null primary key identity (1,1),
+Obracun_Id int not null,
 NazivPlace varchar (50),
-IznosIsplate decimal (18,2) not null
+Bruto decimal (18,2),
+Neto_IznosZaIsplatu decimal (18,2) not null
 );
 
 create table Isplate  (
-IsplataId int not null primary key identity (1,1),
+Isplata_Id int not null primary key identity (1,1),
+Placa_Id int not null,
 Radnik int not null,
-PlacaId int not null,
-IznosIsplate decimal (18,2) not null
+Neto_IznosZaIsplatu decimal (18,2) not null
 );
 
-alter table ObracunPlace add foreign key (Radnik) references Radnici (radnikId);
---alter table Odbici add foreign key (Radnik) references Radnici (radnikId);
-alter table Isplate add foreign key (Radnik) references Radnici (radnikId);
-alter table Place add foreign key (ObracunSatiId) references ObracunPlace(ObracunId);
---alter table Place add foreign key (OdbiciId) references Odbici(OdbiciId);
-alter table Isplate add foreign key (PlacaId) references Place(PlacaId);
+alter table ObracunPlace add foreign key (Radnik) references Radnici (radnik_Id);
+alter table Isplate add foreign key (Radnik) references Radnici (radnik_Id);
+alter table Place add foreign key (Obracun_Id) references ObracunPlace(Obracun_Id);
+alter table Isplate add foreign key (Placa_Id) references Place(Placa_Id);
