@@ -27,10 +27,10 @@ Radnik int not null,
 DatumObracuna date not null,
 BrojRadnihSati int not null,
 CijenaRadnogSata decimal (18,2) not null,
-Bruto decimal(18,2) not null,
-Bruto_I decimal(18,2) not null,
-Bruto_II decimal (18,2)  not null,
-Neto_IznosZaIsplatu decimal (18,2) not null
+Bruto decimal(18,2),
+Bruto_I decimal(18,2),
+Bruto_II decimal (18,2),
+Neto_IznosZaIsplatu decimal (18,2)
 );
 
 --create table Odbici (
@@ -48,7 +48,7 @@ Placa_Id int not null primary key identity (1,1),
 Obracun_Id int not null,
 NazivPlace varchar (50),
 Bruto decimal (18,2),
-Neto_IznosZaIsplatu decimal (18,2) not null
+Neto_IznosZaIsplatu decimal (18,2)
 );
 
 create table Isplate  (
