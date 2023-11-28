@@ -1,4 +1,4 @@
-use edunovawp2;
+use master;
 go
 
 drop database if exists PayRoll;
