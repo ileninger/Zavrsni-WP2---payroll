@@ -28,10 +28,10 @@ create table ObracunPlace (
 	DatumObracuna date not null,
 	BrojRadnihSati int not null,
 	CijenaRadnogSata decimal (18,2) not null,
-	Bruto decimal(18,2),
-	Bruto_I decimal(18,2),
+	Bruto decimal (18,2),
+	Bruto_I decimal (18,2),
 	Bruto_II decimal (18,2),
-	Neto_IznosZaIsplatu decimal (18,2)
+	NetoIznosZaIsplatu decimal (18,2)
 );
 
 create table Place (
@@ -41,6 +41,11 @@ create table Place (
 	NazivPlace varchar (50),
 );
 
+create table Administratori (
+	Administratori_ID int primary key identity (1,1) not null,
+	Ime varchar (50) not null,
+	Lozimka varchar (100) not null
+);
 
 alter table ObracunPlace add foreign key (Radnik) references Radnici (radnik_Id);
 alter table Place add foreign key (Obracun_Id) references ObracunPlace(Obracun_Id);
@@ -70,15 +75,23 @@ insert into ObracunPlace(Radnik,DatumObracuna,BrojRadnihSati,CijenaRadnogSata) v
 (9,'2023-10-31',176,10.00),
 (10,'2023-10-31',176,8.75);
 
-insert into Place(Obracun_Id,BrojObranuca,NazivPlace) values 
-(1,'2023-10','Placa za Studeni 2023');
+insert into Place(Obracun_Id) values 
+(1),(2),(3),(4),(5),(6),(7),(8),(9),(10);
+
 
 
 update ObracunPlace set Bruto=BrojRadnihSati*CijenaRadnogSata;
 update ObracunPlace set Bruto_I = Bruto*0.15+Bruto*0.05;
 update ObracunPlace set Bruto_II = ((Bruto-530.90)*0.24)*0.11+((Bruto-530.90)*0.24);
-update ObracunPlace set Neto_IznosZaIsplatu = Bruto-Bruto_I-Bruto_II;
+update ObracunPlace set NetoIznosZaIsplatu = Bruto-Bruto_I-Bruto_II;
 
-select a.Ime, a.Prezime,b.DatumObracuna,b.BrojRadnihSati,b.CijenaRadnogSata,b.Neto_IznosZaIsplatu
-from Radnici a left join ObracunPlace b
-on a.Radnik_Id = b.Obracun_Id;
+update Place set BrojObranuca='2023-10';
+
+update Place set NazivPlace = 'Placa za studeni 2023';
+select * from Place;
+
+select a.Ime, a.Prezime,b.DatumObracuna,c.BrojObranuca,c.NazivPlace, b.BrojRadnihSati,b.CijenaRadnogSata,b.NetoIznosZaIsplatu
+	from Radnici a left join ObracunPlace b
+	on a.Radnik_Id = b.Obracun_Id
+	left join Place c on a.Radnik_Id=c.Obracun_Id;
+
