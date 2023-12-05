@@ -14,7 +14,6 @@ insert into Radnici (Ime,Prezime,DatumZaposlenja,IBAN,OiB) values
 ('Melani','Bogdanović','1997-10-03','HR9424020065391732569','29358686860'),
 ('Antonio', 'Tomić','2000-02-15','HR3023600004274822228','67962107374');
 
-select * from Radnici;
 
 insert into ObracunPlace(Radnik,DatumObracuna,BrojRadnihSati,CijenaRadnogSata) values 
 (1,'2023-10-31',176,15.00),
@@ -28,6 +27,8 @@ insert into ObracunPlace(Radnik,DatumObracuna,BrojRadnihSati,CijenaRadnogSata) v
 (9,'2023-10-31',176,10.00),
 (10,'2023-10-31',176,8.75);
 
+insert into Place(Obracun_Id,BrojObranuca,NazivPlace) values 
+(1,'2023-10','Placa za Studeni 2023');
 
 
 update ObracunPlace set Bruto=BrojRadnihSati*CijenaRadnogSata;
