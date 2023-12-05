@@ -35,7 +35,7 @@ Neto_IznosZaIsplatu decimal (18,2)
 
 create table Place (
 Placa_Id int not null primary key identity (1,1),
-Obracun_Id int not null,
+Broj_Obracuna char(20),
 NazivPlace varchar (50),
 Bruto decimal (18,2),
 Neto_IznosZaIsplatu decimal (18,2)
