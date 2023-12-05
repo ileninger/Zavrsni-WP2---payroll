@@ -28,6 +28,8 @@ insert into ObracunPlace(Radnik,DatumObracuna,BrojRadnihSati,CijenaRadnogSata) v
 (9,'2023-10-31',176,10.00),
 (10,'2023-10-31',176,8.75);
 
+
+
 update ObracunPlace set Bruto=BrojRadnihSati*CijenaRadnogSata;
 update ObracunPlace set Bruto_I = Bruto*0.15+Bruto*0.05;
 update ObracunPlace set Bruto_II = ((Bruto-530.90)*0.24)*0.11+((Bruto-530.90)*0.24);
@@ -35,5 +37,6 @@ update ObracunPlace set Neto_IznosZaIsplatu = Bruto-Bruto_I-Bruto_II;
 
 
 select a.Ime, a.Prezime,b.DatumObracuna,b.BrojRadnihSati,b.CijenaRadnogSata,b.Neto_IznosZaIsplatu
-from Radnici a inner join ObracunPlace b
+from Radnici a left join ObracunPlace b
 on a.Radnik_Id = b.Obracun_Id;
+
