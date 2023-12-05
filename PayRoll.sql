@@ -47,8 +47,8 @@ create table Administratori (
 	Lozimka varchar (100) not null
 );
 
-alter table ObracunPlace add foreign key (Radnik) references Radnici (radnik_Id);
-alter table Place add foreign key (Obracun_Id) references ObracunPlace(Obracun_Id);
+alter table ObracunPlace add foreign key (Radnik) references Radnici (Radnik_Id);
+alter table Place add foreign key (Placa_Id) references ObracunPlace(Obracun_Id);
 
 
 insert into Radnici (Ime,Prezime,DatumZaposlenja,IBAN,OiB) values 
@@ -76,7 +76,7 @@ insert into ObracunPlace(Radnik,DatumObracuna,BrojRadnihSati,CijenaRadnogSata) v
 (10,'2023-10-31',176,8.75);
 
 insert into Place(Obracun_Id) values 
-(1),(2),(3),(4),(5),(6),(7),(8),(9),(10);
+(1),(1),(1),(1),(1),(1),(1),(1),(1),(1);
 
 
 
@@ -88,10 +88,11 @@ update ObracunPlace set NetoIznosZaIsplatu = Bruto-Bruto_I-Bruto_II;
 update Place set BrojObranuca='2023-10';
 
 update Place set NazivPlace = 'Placa za studeni 2023';
+
 select * from Place;
 
 select a.Ime, a.Prezime,b.DatumObracuna,c.BrojObranuca,c.NazivPlace, b.BrojRadnihSati,b.CijenaRadnogSata,b.NetoIznosZaIsplatu
 	from Radnici a left join ObracunPlace b
-	on a.Radnik_Id = b.Obracun_Id
+	on a.Radnik_Id = b.Radnik
 	left join Place c on a.Radnik_Id=c.Obracun_Id;
 
