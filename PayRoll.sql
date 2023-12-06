@@ -25,6 +25,7 @@ create table Radnici (
 create table ObracunPlace (
 	Obracun_Id int not null primary key identity (1,1),
 	Radnik int not null,
+	--Placa int not null,
 	DatumObracuna date not null,
 	BrojRadnihSati int not null,
 	CijenaRadnogSata decimal (18,2) not null,
@@ -39,6 +40,7 @@ create table Place (
 	Obracun_Id int not null,
 	BrojObranuca varchar (20),
 	NazivPlace varchar (50),
+	DatumIsplate date
 );
 
 create table Administratori (
@@ -48,7 +50,7 @@ create table Administratori (
 );
 
 alter table ObracunPlace add foreign key (Radnik) references Radnici (Radnik_Id);
-alter table Place add foreign key (Placa_Id) references ObracunPlace(Obracun_Id);
+alter table Place add foreign key (Obracun_ID) references ObracunPlace(Obracun_Id);
 
 
 insert into Radnici (Ime,Prezime,DatumZaposlenja,IBAN,OiB) values 
@@ -89,10 +91,10 @@ update Place set BrojObranuca='2023-10';
 
 update Place set NazivPlace = 'Placa za studeni 2023';
 
-select * from Place;
+--select * from Place;
 
 select a.Ime, a.Prezime,b.DatumObracuna,c.BrojObranuca,c.NazivPlace, b.BrojRadnihSati,b.CijenaRadnogSata,b.NetoIznosZaIsplatu
-	from Radnici a left join ObracunPlace b
+	from Radnici a inner join ObracunPlace b
 	on a.Radnik_Id = b.Radnik
-	left join Place c on a.Radnik_Id=c.Obracun_Id;
+	inner join Place c on a.Radnik_Id=c.Placa_Id;
 
