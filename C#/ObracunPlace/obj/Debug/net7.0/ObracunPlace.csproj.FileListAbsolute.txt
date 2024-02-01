@@ -1,0 +1,15 @@
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\bin\Debug\net7.0\ObracunPlace.exe
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\bin\Debug\net7.0\ObracunPlace.deps.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\bin\Debug\net7.0\ObracunPlace.runtimeconfig.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\bin\Debug\net7.0\ObracunPlace.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\bin\Debug\net7.0\ObracunPlace.pdb
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.AssemblyInfoInputs.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.AssemblyInfo.cs
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.csproj.CoreCompileInputs.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.sourcelink.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\refint\ObracunPlace.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.pdb
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ObracunPlace.genruntimeconfig.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ObracunPlace\obj\Debug\net7.0\ref\ObracunPlace.dll
