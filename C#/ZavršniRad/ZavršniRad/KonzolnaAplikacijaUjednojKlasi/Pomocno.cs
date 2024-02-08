@@ -96,14 +96,14 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
             }
         }
 
-        internal static DateOnly UcitajDatum(string poruka, string greska)
+        internal static DateTime UcitajDatum(string poruka, string greska)
         {
             while (true)
             {
-                Console.Write(poruka);
                 try
                 {
-                   return DateOnly.Parse(Console.ReadLine());   
+                    Console.WriteLine(poruka);
+                    return DateTime.Parse(Console.ReadLine());
                 }
                 catch (Exception ex)
                 {

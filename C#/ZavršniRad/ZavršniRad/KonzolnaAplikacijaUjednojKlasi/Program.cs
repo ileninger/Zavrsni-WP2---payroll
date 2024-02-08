@@ -14,12 +14,15 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
         {
             Radnici = new List<Radnik>();
 
+            TesniPodaci();
             PozdravnaPoruka();
             GlavniIzbornik();
 
 
 
         }
+
+       
 
         private void PozdravnaPoruka()
         {
@@ -110,11 +113,30 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
 
         private void PrikaziSveRadnike()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("****************Uneseni radnici****************");
+            Console.WriteLine("***********************************************");
+            var i = 0;
+            Radnici.ForEach(s =>
+            {
+                Console.WriteLine(++i + "." +s); 
+            });
+            Console.WriteLine("***********************************************");
         }
         private void DodajRandika()
         {
-            throw new NotImplementedException();
+            Radnici.Add(new Radnik()
+            {
+                Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj" ),
+                Ime=Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno "),
+                Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno "),
+                OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan "),
+                //DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd/mm/yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy "),
+                Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan")
+                
+
+            });
+            IzbornikRadSaPodacimaORadnicima();
+            
         }
 
 
@@ -137,6 +159,19 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
         private void IzbornikRadaSaPlacama()
         {
 
+        }
+
+        private void TesniPodaci()
+        {
+            Radnici.Add(new Radnik
+            {
+                Sifra = 1,
+                Ime = "Ivan",
+                Prezime = "Leninger",
+                //DatumZaposlenja = 01/11/2013,
+                OiB = "74203150129",
+                Iban= "HR5023600003983799849"
+            });
         }
     }
 }
