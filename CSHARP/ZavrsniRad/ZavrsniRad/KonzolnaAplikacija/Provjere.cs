@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ZavršniRad.KonzolnaAplikacija.Model;
 
 namespace ZavrsniRad.KonzolnaAplikacija
 {
@@ -67,7 +68,5 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
             return kontrolniBroj == int.Parse(oib.Substring(10, 1));
         }
-
-
     }
 }
