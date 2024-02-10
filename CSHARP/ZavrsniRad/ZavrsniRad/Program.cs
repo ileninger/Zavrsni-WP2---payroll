@@ -1,3 +1,3 @@
 ﻿using ZavršniRad;
 
-new ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Program();
+new ZavršniRad.KonzolnaAplikacija.Program();

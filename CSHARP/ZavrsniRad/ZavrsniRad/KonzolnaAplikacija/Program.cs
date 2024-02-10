@@ -4,9 +4,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Model;
+using ZavršniRad.KonzolnaAplikacija.Model;
 
-namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
+namespace ZavršniRad.KonzolnaAplikacija
 {
     internal class Program
     {

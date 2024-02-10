@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Model
+namespace ZavršniRad.KonzolnaAplikacija.Model
 {
     internal abstract class Entitet
     {

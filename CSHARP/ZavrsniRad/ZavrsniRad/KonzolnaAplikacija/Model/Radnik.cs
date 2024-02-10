@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Model
+namespace ZavršniRad.KonzolnaAplikacija.Model
 {
     internal class Radnik:Entitet
     {
@@ -21,7 +21,7 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Model
 
         public override string ToString()
         {
-            return "\n Ime: " + Ime + "\n Prezime: " + Prezime + "\n OiB: " + OiB +  "\n Iban: " + Iban + "\n Radnik je zaposlen od " + DatumZaposlenja.Date;
+            return "\n Ime: " + Ime + "\n Prezime: " + Prezime + "\n OiB: " + OiB +  "\n Iban: " + Iban + "\n Radnik je zaposlen od " + DatumZaposlenja.;
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
+namespace ZavršniRad.KonzolnaAplikacija
 {
     internal class Pomocno
     {
