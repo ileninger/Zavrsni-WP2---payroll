@@ -16,7 +16,7 @@ namespace ZavršniRad.KonzolnaAplikacija
         public GlavniIzbornik()
         {
 
-            Pomocno.Test = true;
+            Pomocno.Test = false;
             ObradaRadnici = new ObradaRadnici();
 
             PozdravnaPoruka();
@@ -39,9 +39,9 @@ namespace ZavršniRad.KonzolnaAplikacija
         {
             Console.WriteLine("\n");
             Console.WriteLine("Glavni izbornik");
-            Console.WriteLine("**********************************************");
-            Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada ");
-            Console.WriteLine("**********************************************");
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti ");
+            Console.WriteLine("*****************************************");
             Console.WriteLine("1. Rad s podacima o radnicima ");
             Console.WriteLine("2. Rad s obračunima ");
             Console.WriteLine("3. Rad s plačama ");
@@ -60,10 +60,10 @@ namespace ZavršniRad.KonzolnaAplikacija
                     GlavniIzbornikSucelje();
                     break;
                 case 2:
-                    IzbornikRadaSaObracunima();
+                    //IzbornikRadaSaObracunima();
                     break;
                 case 3:
-                    IzbornikRadaSaPlacama();
+                    //IzbornikRadaSaPlacama();
                     break;
                 case 4:
                     Console.WriteLine("******************************************");
@@ -72,22 +72,6 @@ namespace ZavršniRad.KonzolnaAplikacija
                     break;
 
             }
-        }
-
-        //**************RADNICI**************
-
-
-
-
-        //**************OBRACUNI**************
-        private void IzbornikRadaSaObracunima()
-        {
-            
-        }
-
-        private void IzbornikRadaSaPlacama()
-        {
-
         }
 
     }

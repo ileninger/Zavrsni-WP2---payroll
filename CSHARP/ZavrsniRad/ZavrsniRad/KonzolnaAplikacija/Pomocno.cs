@@ -111,6 +111,43 @@ namespace ZavršniRad.KonzolnaAplikacija
                     Console.WriteLine(greska);
                 }
             }
-        } 
+        }
+
+        public static bool ProvjeriOiB(string oib)
+        {
+            if (oib.Length != 11)
+            {
+                Console.WriteLine("**********************************");
+                Console.WriteLine("OIB mora imati 11 znamenki.");
+                return false;
+            }
+
+            long b;
+            if (!long.TryParse(oib, out b))
+            {
+                Console.WriteLine("**********************************");
+
+                Console.WriteLine("OIB mora sadržavati samo brojeve.");
+                return false;
+            }
+
+            int a = 10;
+            for (int i = 0; i < 10; i++)
+            {
+                a = a + int.Parse(oib.Substring(i, 1));
+                a = a % 10;
+                if (a == 0)
+                {
+                    a = 10;
+                }
+                a *= 2;
+                a = a % 11;
+            }
+
+            int kontrolniBroj = 11 - a;
+            if (kontrolniBroj == 10) kontrolniBroj = 0;
+
+            return kontrolniBroj == int.Parse(oib.Substring(10, 1));
+        }
     }
 }

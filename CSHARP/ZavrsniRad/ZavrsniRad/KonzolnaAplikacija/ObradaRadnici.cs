@@ -23,8 +23,8 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         public void PrikaziIzbornik()
         {
-            Console.WriteLine("**********************************************");
-            Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada ");
+            Console.WriteLine("**********************************************************");
+            Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s radnicima ");
             Console.WriteLine("**********************************************");
             Console.WriteLine("1. Prikaži sve radnike ");
             Console.WriteLine("2. Dodaj radnika ");
@@ -69,27 +69,45 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         private void PrikaziSveRadnike()
         {
+            Console.WriteLine("***********************************************");
             Console.WriteLine("****************Uneseni radnici****************");
             Console.WriteLine("***********************************************");
+            
             var i = 0;
             Radnici.ForEach(s =>
             {
                 Console.WriteLine(++i + "." + s);
             });
-            Console.WriteLine("***********************************************");
+            Console.WriteLine("///////////////////////////////////////////////");
         }
 
         private void DodajRandika()
         {
-            Radnici.Add(new Radnik()
+            var radnik = new Radnik();
+            bool IspravnostOiB = false;
+            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+            radnik.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
+            radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
+
+
+            //Tražimo unos ispravnog OiB-a
+            while (!IspravnostOiB)
             {
-                Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj"),
-                Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno "),
-                Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno "),
-                OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan "),
-                DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd.mm.yyyy "),
-                Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan")
-            }); 
+                radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan ");
+                if (Pomocno.ProvjeriOiB(radnik.OiB))
+                {
+                    Console.WriteLine("Unjeliste neispravan OiB!!! ");
+                }
+                else {
+                    IspravnostOiB=true;
+                }
+            }
+            radnik.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd.mm.yyyy ");
+            radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan");
+
+
+            Radnici.Add(radnik);
+            
         }
 
         private void UrediPodatkeORadniku()
