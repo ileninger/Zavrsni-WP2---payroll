@@ -129,13 +129,41 @@ namespace ZavrsniRad.KonzolnaAplikacija
         {
             PrikaziSveRadnike();
             int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj smjera: ", "Nije dobar odabir", 1, Radnici.Count());
-            var s = Radnici[index - 1];
-            s.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
-            s.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
-            s.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
-            s.OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan ");
-            s.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy ");
-            s.Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan"); ;
+            var radnik = Radnici[index - 1];
+            bool IspravnostOiB = false;
+            bool IspravnostIban = false;
+
+            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+            radnik.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
+            radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
+
+            while (!IspravnostOiB)
+            {
+                radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika: ", "OiB radnika je obavezan ");
+                if (!Provjere.ProvjeriIspavnostOiB(radnik.OiB))
+                {
+                    Console.WriteLine("Unjeli ste neispravan OiB!!! ");
+                }
+                else
+                {
+                    IspravnostOiB = true;
+                }
+            }
+
+            radnik.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy ");
+
+            while (!IspravnostIban)
+            {
+                radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika s predznakom HR: ", "Niste unjeli dobar Iban, Iban račun mora započinjati s HR");
+                if (!Provjere.ProvjeriIspravnostHrvatskogIBAN(radnik.Iban))
+                {
+                    Console.WriteLine("Unjeli ste neispravan Iban, Iban mora započinjati s HR!!");
+                }
+                else
+                {
+                    IspravnostIban = true;
+                }
+            }
         }
         private void TesniPodaci()
         {
@@ -147,7 +175,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 DatumZaposlenja = new DateTime(2017, 1, 26),
                 OiB = "74203130129",
                 Iban = "5023600003983799849"
-            }); ;
+            }); 
         }
     }
 }
