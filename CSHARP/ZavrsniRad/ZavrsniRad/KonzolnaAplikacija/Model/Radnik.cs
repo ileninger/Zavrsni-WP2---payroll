@@ -21,7 +21,7 @@ namespace ZavršniRad.KonzolnaAplikacija.Model
 
         public override string ToString()
         {
-            return "\n Ime: " + Ime + "\n Prezime: " + Prezime + "\n OiB: " + OiB +  "\n Iban: " + Iban + "\n Radnik je zaposlen od " + DatumZaposlenja.;
+            return "\n Ime: " + Ime + "\n Prezime: " + Prezime + "\n OiB: " + OiB +  "\n Iban: " + Iban + "\n Radnik je zaposlen od " + DatumZaposlenja;
         }
 
     }

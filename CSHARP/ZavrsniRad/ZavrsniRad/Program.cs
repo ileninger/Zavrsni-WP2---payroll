@@ -1,3 +1,3 @@
 ﻿using ZavršniRad;
 
-new ZavršniRad.KonzolnaAplikacija.Program();
+new ZavršniRad.KonzolnaAplikacija.GlavniIzbornik();

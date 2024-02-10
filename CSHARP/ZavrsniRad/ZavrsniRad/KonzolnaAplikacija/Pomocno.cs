@@ -8,6 +8,7 @@ namespace ZavršniRad.KonzolnaAplikacija
 {
     internal class Pomocno
     {
+        public static bool Test;
         public static int UcitajRasponBrojeva(string poruka, string greska, int poc, int kraj)
         {
             int i;
