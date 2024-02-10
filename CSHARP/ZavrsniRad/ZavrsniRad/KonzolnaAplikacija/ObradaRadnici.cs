@@ -128,43 +128,76 @@ namespace ZavrsniRad.KonzolnaAplikacija
         private void UrediPodatkeORadniku()
         {
             PrikaziSveRadnike();
-            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj smjera: ", "Nije dobar odabir", 1, Radnici.Count());
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj radnika: ", "Nije dobar odabir", 1, Radnici.Count());
             var radnik = Radnici[index - 1];
             bool IspravnostOiB = false;
             bool IspravnostIban = false;
 
-            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
-            radnik.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
-            radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
 
-            while (!IspravnostOiB)
+            Console.WriteLine("1.Izmjeni šifru radnika ");
+            Console.WriteLine("2.Izmeni ime radnika ");
+            Console.WriteLine("3.Izmeni prezime radnika ");
+            Console.WriteLine("4.Izmjeni OiB radnika ");
+            Console.WriteLine("5.Izmjenite datum zaposlenja");
+            Console.WriteLine("6.Izmjenite Iban randika");
+            Console.WriteLine("7.Odustanite od promjena podataka o radaniku");
+
+            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-7 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 1-7 ", 1, 7))
             {
-                radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika: ", "OiB radnika je obavezan ");
-                if (!Provjere.ProvjeriIspavnostOiB(radnik.OiB))
-                {
-                    Console.WriteLine("Unjeli ste neispravan OiB!!! ");
-                }
-                else
-                {
-                    IspravnostOiB = true;
-                }
+                case 1:
+                    radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+                    PrikaziSveRadnike();
+                    break;
+                case 2:
+                    radnik.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
+                    PrikaziSveRadnike();
+                    break;
+                case 3:
+                    radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
+                    PrikaziSveRadnike();
+                    break;
+                case 4:
+                    while (!IspravnostOiB)
+                    {
+                        radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika: ", "OiB radnika je obavezan ");
+                        if (!Provjere.ProvjeriIspavnostOiB(radnik.OiB))
+                        {
+                            Console.WriteLine("Unjeli ste neispravan OiB!!! ");
+                        }
+                        else
+                        {
+                            IspravnostOiB = true;
+                        }
+                    }
+                    PrikaziSveRadnike();
+                    break;
+                case 5:
+                    radnik.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy ");
+                    PrikaziSveRadnike();
+                    break;
+                case 6:
+                    while (!IspravnostIban)
+                    {
+                        radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika s predznakom HR: ", "Niste unjeli dobar Iban, Iban račun mora započinjati s HR");
+                        if (!Provjere.ProvjeriIspravnostHrvatskogIBAN(radnik.Iban))
+                        {
+                            Console.WriteLine("Unjeli ste neispravan Iban, Iban mora započinjati s HR!!");
+                        }
+                        else
+                        {
+                            IspravnostIban = true;
+                        }
+                    }
+                    PrikaziSveRadnike();
+                    break;
+                case 7:
+                    PrikaziSveRadnike();
+                    break;
+                 }
             }
+        
+    
 
-            radnik.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy ");
-
-            while (!IspravnostIban)
-            {
-                radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika s predznakom HR: ", "Niste unjeli dobar Iban, Iban račun mora započinjati s HR");
-                if (!Provjere.ProvjeriIspravnostHrvatskogIBAN(radnik.Iban))
-                {
-                    Console.WriteLine("Unjeli ste neispravan Iban, Iban mora započinjati s HR!!");
-                }
-                else
-                {
-                    IspravnostIban = true;
-                }
-            }
-        }
         private void TesniPodaci()
         {
             Radnici.Add(new Radnik
