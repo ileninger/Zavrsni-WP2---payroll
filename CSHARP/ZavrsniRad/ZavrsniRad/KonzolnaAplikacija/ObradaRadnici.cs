@@ -85,25 +85,40 @@ namespace ZavrsniRad.KonzolnaAplikacija
         {
             var radnik = new Radnik();
             bool IspravnostOiB = false;
-            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
-            radnik.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
-            radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
+            bool IspravnostIban = false;
+            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika: ", "Šifra radnika mora biti pozivni cijeli broj");
+            radnik.Ime = Pomocno.UcitajString("Unesite ime radnika: ", "Ime radnika je obavezno ");
+            radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika: ", "Prezime radnika je obavezno ");
 
 
             //Tražimo unos ispravnog OiB-a
             while (!IspravnostOiB)
             {
-                radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan ");
-                if (Pomocno.ProvjeriOiB(radnik.OiB))
+                radnik.OiB = Pomocno.UcitajString("Unesite OiB radnika: ", "OiB radnika je obavezan ");
+                if (!Provjere.ProvjeriIspavnostOiB(radnik.OiB))
                 {
-                    Console.WriteLine("Unjeliste neispravan OiB!!! ");
+                    Console.WriteLine("Unjeli ste neispravan OiB!!! ");
                 }
                 else {
                     IspravnostOiB=true;
                 }
             }
+           
             radnik.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd.mm.yyyy ");
-            radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan");
+            //Tražimo unos ispravnog Ibana
+            while(!IspravnostIban)
+            {
+                radnik.Iban = Pomocno.UcitajString("Unesite Iban radnika s predznakom HR: ", "Niste unjeli dobar Iban, Iban račun mora započinjati s HR");
+                if(!Provjere.ProvjeriIspravnostHrvatskogIBAN(radnik.Iban))
+                {
+                    Console.WriteLine("Unjeli ste neispravan Iban, Iban mora započinjati s HR!!");
+                }
+                else
+                {
+                    IspravnostIban=true;
+                }
+            }
+           
 
 
             Radnici.Add(radnik);
