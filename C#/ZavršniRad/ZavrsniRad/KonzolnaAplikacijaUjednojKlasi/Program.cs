@@ -176,9 +176,9 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
                 Sifra = 1,
                 Ime = "Ivan",
                 Prezime = "Leninger",
-                DatumZaposlenja = 01.11.2013,
-                OiB = "74203150129",
-                Iban = "HR5023600003983799849"
+                DatumZaposlenja = new DateTime(2017,1,26),
+                OiB = "74203130129",
+                Iban = "5023600003983799849"
             });
         }
     }

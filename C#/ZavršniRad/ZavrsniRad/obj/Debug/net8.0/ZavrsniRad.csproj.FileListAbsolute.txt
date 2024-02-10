@@ -1,0 +1,15 @@
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\bin\Debug\net8.0\ZavrsniRad.exe
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\bin\Debug\net8.0\ZavrsniRad.deps.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\bin\Debug\net8.0\ZavrsniRad.runtimeconfig.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\bin\Debug\net8.0\ZavrsniRad.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\bin\Debug\net8.0\ZavrsniRad.pdb
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.AssemblyInfoInputs.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.AssemblyInfo.cs
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.csproj.CoreCompileInputs.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.sourcelink.json
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\refint\ZavrsniRad.dll
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.pdb
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ZavrsniRad.genruntimeconfig.cache
+C:\Users\ileni\OneDrive\Dokumenti\GitHub\Zavrsni-WP2---payroll\C#\ZavršniRad\ZavršniRad\obj\Debug\net8.0\ref\ZavrsniRad.dll
