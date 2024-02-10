@@ -102,7 +102,7 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
             {
                 try
                 {
-                    Console.WriteLine(poruka);
+                    Console.Write(poruka);
                     return DateTime.Parse(Console.ReadLine());
                 }
                 catch (Exception ex)

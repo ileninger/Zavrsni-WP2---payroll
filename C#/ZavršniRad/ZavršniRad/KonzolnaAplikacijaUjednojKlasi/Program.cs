@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ZavršniRad.KonzolnaAplikacijaUjednojKlasi.Model;
@@ -130,19 +131,26 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
                 Ime=Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno "),
                 Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno "),
                 OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan "),
-                //DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd/mm/yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy "),
+                DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd/mm/yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy "),
                 Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan")
                 
 
             });
             IzbornikRadSaPodacimaORadnicima();
-            
         }
 
 
         private void UrediPodatkeORadniku()
         {
-            throw new NotImplementedException();
+            PrikaziSveRadnike();
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj smjera: ", "Nije dobar odabir", 1, Radnici.Count());
+            var s = Radnici[index - 1];
+            s.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+            s.Ime = Pomocno.UcitajString("Unesite ime radnika ", "Ime radnika je obavezno ");
+            s.Prezime = Pomocno.UcitajString("Unesite prezime radnika ", "Prezime radnika je obavezno ");
+            s.OiB = Pomocno.UcitajString("Unesite OiB radnika ", "OiB radnika je obavezan ");
+            s.DatumZaposlenja = Pomocno.UcitajDatum("Unesite datum zaposlenja radnika u formatu dd.mm.yyyy ", "Datum zaposlenja radnika mora biti u formatu dd/mm/yyyy ");
+            s.Iban = Pomocno.UcitajString("Unesite Iban radnika ", "Iban randika je obavezan");
         }
 
         private void ObrisiRadnika()
@@ -168,9 +176,9 @@ namespace ZavršniRad.KonzolnaAplikacijaUjednojKlasi
                 Sifra = 1,
                 Ime = "Ivan",
                 Prezime = "Leninger",
-                //DatumZaposlenja = 01/11/2013,
+                DatumZaposlenja = 01.11.2013,
                 OiB = "74203150129",
-                Iban= "HR5023600003983799849"
+                Iban = "HR5023600003983799849"
             });
         }
     }
