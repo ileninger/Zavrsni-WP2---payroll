@@ -16,7 +16,7 @@ namespace ZavršniRad.KonzolnaAplikacija
         public GlavniIzbornik()
         {
 
-            Pomocno.Test = false;
+            Pomocno.Test = true;
             ObradaRadnici = new ObradaRadnici();
 
             PozdravnaPoruka();
