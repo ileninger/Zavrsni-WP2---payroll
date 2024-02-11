@@ -11,8 +11,8 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
     {
         public decimal OsnovniOsobniOdbitak { get; set; }
 
-        public decimal PostotakZaPrviMirovnisnkiStup { get; set; }
+        public decimal UdioZaPrviMirovnisnkiStup { get; set; }
 
-        public decimal PostotakZaDrugiMirovnisnkiStup { get; set; }
+        public decimal UdioZaDrugiMirovnisnkiStup { get; set; }
     }
 }
