@@ -25,7 +25,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
         {
             Console.WriteLine("**********************************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s radnicima ");
-            Console.WriteLine("**********************************************");
+            Console.WriteLine("**********************************************************");
             Console.WriteLine("1. Prikaži sve radnike ");
             Console.WriteLine("2. Dodaj radnika ");
             Console.WriteLine("3. Izmjeni  podatke o radniku ");
@@ -36,7 +36,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         private void OdabirIzbornikRadaSaPodacimaORadnicima()
         {
-            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s glavnim izbornikom: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
+            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s po: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
             {
                 case 1:
                     PrikaziSveRadnike();
@@ -60,14 +60,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
             };
         }
 
-        private void ObrisiRadnika()
-        {
-            PrikaziSveRadnike();
-            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, Radnici.Count());
-            Radnici.RemoveAt(index - 1);
-        }
 
-        private void PrikaziSveRadnike()
+
+        public void PrikaziSveRadnike()
         {
             Console.WriteLine("***********************************************");
             Console.WriteLine("****************Uneseni radnici****************");
@@ -195,8 +190,15 @@ namespace ZavrsniRad.KonzolnaAplikacija
                     break;
                  }
             }
-        
-    
+
+        private void ObrisiRadnika()
+        {
+            PrikaziSveRadnike();
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, Radnici.Count());
+            Radnici.RemoveAt(index - 1);
+        }
+
+
 
         private void TesniPodaci()
         {
