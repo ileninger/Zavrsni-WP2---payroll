@@ -8,7 +8,7 @@ using ZavršniRad.KonzolnaAplikacija.Model;
 
 namespace ZavrsniRad.KonzolnaAplikacija.Model
 {
-    internal class Obracun:Odbici
+    internal class Obracun:Odbitak
     {
         public List<Radnik> Radnici { get; set; }
         public DateTime DatumObracuna { get; set; }
@@ -29,7 +29,9 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
 
         public override string ToString()
         {
-            return "\n Datum obračuna: " + DatumObracuna + "\n Cijena radnog sata " + CijenaRadnogSata  ;
+            return "\n Datum obračuna: " + DatumObracuna + "\n Cijena radnog sata: " + CijenaRadnogSata + "EUR" +"\n Koefijent radnog mjesta iznosi: " +  "\n"
+                + "\n BrutoI iznosi: " +  BrutoI + "EUR" + "\n BrutoII iznosi: " + BrutoII +"EUR" + "\n" +
+                "\n Radniku će na račun biti isplačeno: " + NetoIznosZaIsplatuRadniku + "EUR";
         }
 
 
