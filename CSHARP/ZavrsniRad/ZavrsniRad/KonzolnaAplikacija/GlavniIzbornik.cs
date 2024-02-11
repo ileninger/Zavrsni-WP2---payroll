@@ -63,6 +63,7 @@ namespace ZavršniRad.KonzolnaAplikacija
                     break;
                 case 2:
                     ObradaObracuni.PrikaziIzbornik();
+                    GlavniIzbornikSucelje();
                     break;
                 case 3:
                     //IzbornikRadaSaPlacama();
