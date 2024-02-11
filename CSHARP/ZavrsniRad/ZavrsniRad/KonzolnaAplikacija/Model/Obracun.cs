@@ -12,7 +12,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
     {
         public List<Radnik> Radnici { get; set; }
         public DateTime DatumObracuna { get; set; }
-        public int BrojRadnihSati { get; set; }
+        public decimal BrojRadnihSati { get; set; }
 
         public decimal CijenaRadnogSata { get; set; }
 
@@ -24,13 +24,17 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
         //BrurtoII = BrutoI - (MIO I + MIO II) - služi kao porezna osnovica
         public decimal BrutoII { get; set; }
 
+        public decimal FaktorKorekcijePorezaPrireza { get; set; }
 
         public decimal NetoIznosZaIsplatuRadniku { get; set; }
 
         public override string ToString()
         {
             return "\n Datum obračuna: " + DatumObracuna + "\n Cijena radnog sata: " + CijenaRadnogSata + "EUR" +"\n Koefijent radnog mjesta iznosi: " +  "\n"
-                + "\n BrutoI iznosi: " +  BrutoI + "EUR" + "\n BrutoII iznosi: " + BrutoII +"EUR" + "\n" +
+                + "\n BrutoI iznosi: " +  BrutoI + "EUR" + 
+                "\n Uplata za mirovinsko osiguranje na temelju gemeracijske solidarnosti iznosti: " + UdioZaPrviMirovnisnkiStup + "EUR" +
+                "\n Uplata za mirovinsko osiguranje na temelju idividualne kapitalizirane štednje iznosti: " + UdioZaDrugiMirovnisnkiStup + "EUR" +
+                "\n BrutoII iznosi: " + BrutoII +"EUR" + "\n" +
                 "\n Radniku će na račun biti isplačeno: " + NetoIznosZaIsplatuRadniku + "EUR";
         }
 
