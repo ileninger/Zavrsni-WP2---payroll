@@ -36,7 +36,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         private void OdabirIzbornikRadaSaPodacimaORadnicima()
         {
-            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s po: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
+            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s radnicima: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
             {
                 case 1:
                     PrikaziSveRadnike();
@@ -68,11 +68,13 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("****************Uneseni radnici****************");
             Console.WriteLine("***********************************************");
             
-            var i = 0;
-            Radnici.ForEach(s =>
+            var b = 1;
+
+            foreach(Radnik radnik in Radnici)
             {
-                Console.WriteLine(++i + "." + s);
-            });
+                Console.WriteLine("{0}. {1}",b++,radnik);
+            }
+           
             Console.WriteLine("///////////////////////////////////////////////");
         }
 
