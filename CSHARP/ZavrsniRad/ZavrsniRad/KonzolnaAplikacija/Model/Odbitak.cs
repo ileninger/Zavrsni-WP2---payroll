@@ -14,5 +14,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
         public decimal UdioZaPrviMirovnisnkiStup { get; set; }
 
         public decimal UdioZaDrugiMirovnisnkiStup { get; set; }
+
+        public decimal  FaktorKorekcijePorezaPrireza { get; set; }
     }
 }
