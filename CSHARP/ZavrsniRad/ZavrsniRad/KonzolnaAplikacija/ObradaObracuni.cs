@@ -75,24 +75,24 @@ namespace ZavrsniRad.KonzolnaAplikacija
             o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna: ", "Šifra obračuna mora biti pozivni cijeli broj");
             o.Radnici = DodjeliRadnikeObracunu();
 
-            o.BrojRadnihSati = Pomocno.UcitajDecimalnibroj("Unesite koliko je sati radnik odradio: ", "Broj radnih sati mora biti cijeli broj broj");//trazi da broj sati bude cijeli broj
-            o.CijenaRadnogSata = Pomocno.UcitajDecimalnibroj("Unesite cijenu radnog sata radnika: ", "Cijena radnog sata mora biti decimalni broj");
-            o.KoeficijentRadnogMjesta = Pomocno.UcitajDecimalnibroj("Unesite koeficijent radnog mjesta ", "Koeficijent radnog mjesta mora biti decimalni broj");
-            o.BrutoI = o.BrojRadnihSati*o.CijenaRadnogSata*o.KoeficijentRadnogMjesta;
-            o.UdioZaPrviMirovnisnkiStup = ((Pomocno.UcitajDecimalnibroj("Unesite postotak za prvi mirovinski stup: ","Unos mora biti decimalni broj ")) / 100)*o.BrutoI;
-            o.UdioZaDrugiMirovnisnkiStup = ((Pomocno.UcitajDecimalnibroj("Unesite postotak za drugi mirovinski stup: ", "Unos mora biti decimalni broj")) / 100) * o.BrutoI;
+            o.BrojRadnihSati = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koliko je sati radnik odradio: ", "Broj radnih sati mora biti cijeli broj broj"),2);
+            o.CijenaRadnogSata = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite cijenu radnog sata radnika: ", "Cijena radnog sata mora biti decimalni broj"),2);
+            o.KoeficijentRadnogMjesta = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koeficijent radnog mjesta ", "Koeficijent radnog mjesta mora biti decimalni broj"),2);
+            o.BrutoI = Math.Round(o.BrojRadnihSati*o.CijenaRadnogSata*o.KoeficijentRadnogMjesta,2);
+            o.UdioZaPrviMirovnisnkiStup = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za prvi mirovinski stup: ","Unos mora biti decimalni broj ")) / 100)*o.BrutoI,2);
+            o.UdioZaDrugiMirovnisnkiStup =Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za drugi mirovinski stup: ", "Unos mora biti decimalni broj")) / 100) * o.BrutoI,2);
 
-            o.BrutoII = o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup);
+            o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup),2);
             
             if(!Pomocno.UcitajBool("Postoji li za radnikovu prijavljenu adresu faktor korekcije poreza prireza: (da ili bilo što drugo za ne): "))
             {
-                o.NetoIznosZaIsplatuRadniku = o.BrutoII;
+                o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII,2);
             }
             else {
-                o.OsnovniOsobniOdbitak = Pomocno.UcitajDecimalnibroj("Unesite osnovni osobni odbitak: ", "Unos mora biti decimalni broj");
-                o.PoreznaOsnovica = o.BrutoII - o.OsnovniOsobniOdbitak;
-                o.FaktorKorekcijePorezaPrireza = ((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100)*o.PoreznaOsnovica;
-                o.NetoIznosZaIsplatuRadniku = o.BrutoII - o.FaktorKorekcijePorezaPrireza;
+                o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite osnovni osobni odbitak: ", "Unos mora biti decimalni broj"),2);
+                o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak,2);
+                o.FaktorKorekcijePorezaPrireza = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100)*o.PoreznaOsnovica,2);
+                o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.FaktorKorekcijePorezaPrireza,2);
                  
 
             }
