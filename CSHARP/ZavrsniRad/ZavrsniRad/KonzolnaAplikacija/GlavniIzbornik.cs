@@ -12,14 +12,14 @@ namespace ZavršniRad.KonzolnaAplikacija
     internal class GlavniIzbornik
     {
         public ObradaRadnici ObradaRadnici { get; }
-        public ObradaObracuni ObradaObracuni { get; }
+        public ObradaObracuni ObradaObracuni;
 
         public GlavniIzbornik()
         {
 
             Pomocno.Test = true;
             ObradaRadnici = new ObradaRadnici();
-            ObradaObracuni = new ObradaObracuni();
+            ObradaObracuni = new ObradaObracuni(this);
 
             PozdravnaPoruka();
             GlavniIzbornikSucelje();
