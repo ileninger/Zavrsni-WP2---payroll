@@ -116,7 +116,7 @@ namespace ZavršniRad.KonzolnaAplikacija
         internal static bool UcitajBool(string poruka)
         {
             Console.Write(poruka);
-            return Console.ReadLine().Trim().ToLower().Equals("Da") ? true : false;
+            return Console.ReadLine().Trim().ToLower().Equals("da") ? true : false;
         }
 
     }
