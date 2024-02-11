@@ -26,6 +26,8 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
 
         public decimal FaktorKorekcijePorezaPrireza { get; set; }
 
+        public decimal PoreznaOsnovica{ get; set; }
+
         public decimal NetoIznosZaIsplatuRadniku { get; set; }
 
         public override string ToString()
@@ -34,7 +36,9 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
                 + "\n BrutoI iznosi: " +  BrutoI + "EUR" + 
                 "\n Uplata za mirovinsko osiguranje na temelju gemeracijske solidarnosti iznosti: " + UdioZaPrviMirovnisnkiStup + "EUR" +
                 "\n Uplata za mirovinsko osiguranje na temelju idividualne kapitalizirane štednje iznosti: " + UdioZaDrugiMirovnisnkiStup + "EUR" +
-                "\n BrutoII iznosi: " + BrutoII +"EUR" + "\n" +
+                "\n BrutoII iznosi: " + BrutoII +"EUR"  +
+                "\n Porezna osnovica iznosi:" + PoreznaOsnovica + "EUR" +
+                "\n Faktor korekcije poreza i prireza iznosi: " + FaktorKorekcijePorezaPrireza + "EUR"+
                 "\n Radniku će na račun biti isplačeno: " + NetoIznosZaIsplatuRadniku + "EUR";
         }
 
