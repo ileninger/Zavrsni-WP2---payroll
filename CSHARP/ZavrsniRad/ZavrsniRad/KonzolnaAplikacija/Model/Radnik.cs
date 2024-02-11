@@ -19,6 +19,7 @@ namespace ZavršniRad.KonzolnaAplikacija.Model
 
         public string Iban { get; set; }
 
+
         public override string ToString()
         {
             return "\n Ime: " + Ime + "\n Prezime: " + Prezime + "\n OiB: " + OiB +  "\n Iban: " + Iban + "\n Radnik je zaposlen od " + DatumZaposlenja;
