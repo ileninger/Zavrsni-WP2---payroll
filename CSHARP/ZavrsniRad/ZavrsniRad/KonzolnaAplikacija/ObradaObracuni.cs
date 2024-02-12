@@ -91,8 +91,8 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite osnovni osobni odbitak: ", "Unos mora biti decimalni broj"), 2);
                 o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
-                o.FaktorKorekcijePorezaPrireza = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
-                o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.FaktorKorekcijePorezaPrireza, 2);
+                o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
+                o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.PorezNaDohodak, 2);
             }
 
             Obracuni.Add(o);
@@ -175,8 +175,8 @@ namespace ZavrsniRad.KonzolnaAplikacija
                     {
                         o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite osnovni osobni odbitak: ", "Unos mora biti decimalni broj"), 2);
                         o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
-                        o.FaktorKorekcijePorezaPrireza = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
-                        o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.FaktorKorekcijePorezaPrireza, 2);
+                        o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite faktor korekcije poreza i preireza: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
+                        o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.PorezNaDohodak, 2);
                     }
                     PrikaziSveObracune();
                     break;

@@ -7,7 +7,7 @@ using ZavršniRad.KonzolnaAplikacija.Model;
 
 namespace ZavrsniRad.KonzolnaAplikacija.Model
 {
-    internal class Odbitak:Entitet
+    internal abstract class Odbitak:Entitet
     {
         public decimal OsnovniOsobniOdbitak { get; set; }
 
@@ -15,6 +15,9 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
 
         public decimal UdioZaDrugiMirovnisnkiStup { get; set; }
 
-        public decimal  FaktorKorekcijePorezaPrireza { get; set; }
+        public decimal PorezNaDohodak { get; set; }
+
+
+        public decimal PoreznaOsnovica { get; set; }
     }
 }

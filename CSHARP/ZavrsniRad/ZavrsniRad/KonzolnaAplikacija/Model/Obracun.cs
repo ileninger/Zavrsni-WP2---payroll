@@ -24,9 +24,9 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
         //BrurtoII = BrutoI - (MIO I + MIO II) - služi kao porezna osnovica
         public decimal BrutoII { get; set; }
 
-        public decimal FaktorKorekcijePorezaPrireza { get; set; }
+        public decimal PorezNaDohodak { get; set; }
 
-        public decimal PoreznaOsnovica{ get; set; }
+
 
         public decimal NetoIznosZaIsplatuRadniku { get; set; }
 
@@ -38,7 +38,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
                 "\n Uplata za mirovinsko osiguranje na temelju idividualne kapitalizirane štednje iznosti: " + UdioZaDrugiMirovnisnkiStup + "EUR" +
                 "\n BrutoII iznosi: " + BrutoII +"EUR"  +
                 "\n Porezna osnovica iznosi:" + PoreznaOsnovica + "EUR" +
-                "\n Faktor korekcije poreza i prireza iznosi: " + FaktorKorekcijePorezaPrireza + "EUR"+
+                "\n Faktor korekcije poreza i prireza iznosi: " + PorezNaDohodak + "EUR"+
                 "\n Radniku će na račun biti isplačeno: " + NetoIznosZaIsplatuRadniku + "EUR";
         }
 
