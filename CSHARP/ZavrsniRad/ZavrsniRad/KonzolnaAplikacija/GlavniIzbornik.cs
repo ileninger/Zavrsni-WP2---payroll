@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -12,7 +12,11 @@ namespace ZavršniRad.KonzolnaAplikacija
     internal class GlavniIzbornik
     {
         public ObradaRadnici ObradaRadnici { get; }
+
+        public ObradaPlace ObradaPlace;
+        
         public ObradaObracuni ObradaObracuni;
+        
 
         public GlavniIzbornik()
         {
@@ -20,6 +24,7 @@ namespace ZavršniRad.KonzolnaAplikacija
             Pomocno.Test = true;
             ObradaRadnici = new ObradaRadnici();
             ObradaObracuni = new ObradaObracuni(this);
+            ObradaPlace = new ObradaPlace();
 
             PozdravnaPoruka();
             GlavniIzbornikSucelje();
@@ -66,7 +71,8 @@ namespace ZavršniRad.KonzolnaAplikacija
                     GlavniIzbornikSucelje();
                     break;
                 case 3:
-                    //IzbornikRadaSaPlacama();
+                    ObradaPlace.PrikaziIzbornik();
+                    GlavniIzbornikSucelje();
                     break;
                 case 4:
                     Console.WriteLine("******************************************");
