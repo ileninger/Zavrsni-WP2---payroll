@@ -24,7 +24,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
         //BrurtoII = BrutoI - (MIO I + MIO II) - služi kao porezna osnovica
         public decimal BrutoII { get; set; }
 
-        public decimal PorezNaDohodak { get; set; }
+
 
 
 
