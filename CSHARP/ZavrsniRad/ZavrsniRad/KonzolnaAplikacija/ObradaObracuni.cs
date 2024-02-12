@@ -129,8 +129,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("7. Izmjeni postotak za drugi mirovinski stup ");
             Console.WriteLine("8. Izmjeni iznos osnovnog osobnog odbitka ");
             Console.WriteLine("9. Izmjenite postotak poreza na dohodak ");
+            Console.WriteLine("0. Odustanite od promjena podataka o obračunu ");
 
-            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 0-9 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 0-9 ", 1, 9))
+            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 0-9 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 0-9 ", 0, 9))
             {
                 case 1:
                     o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna ", "Šifra obračuna mora biti pozivni cijeli broj");
