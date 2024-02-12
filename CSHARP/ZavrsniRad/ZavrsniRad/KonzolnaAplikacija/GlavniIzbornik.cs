@@ -45,10 +45,15 @@ namespace ZavršniRad.KonzolnaAplikacija
         public void GlavniIzbornikSucelje()
         {
             Console.WriteLine("\n");
-            Console.WriteLine("Glavni izbornik");
+            Thread.Sleep(2000);
+
+            Console.WriteLine("************Glavni izbornik**************");
             Console.WriteLine("*****************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti ");
             Console.WriteLine("*****************************************");
+            
+            Thread.Sleep(2000);
+
             Console.WriteLine("1. Rad s podacima o radnicima ");
             Console.WriteLine("2. Rad s obračunima ");
             Console.WriteLine("3. Rad s plačama ");
@@ -75,6 +80,7 @@ namespace ZavršniRad.KonzolnaAplikacija
                     GlavniIzbornikSucelje();
                     break;
                 case 4:
+                    Thread.Sleep(1000);
                     Console.WriteLine("******************************************");
                     Console.WriteLine("Hvala na korištenju aplikaije. Doviđenja!!");
                     Console.WriteLine("******************************************");
