@@ -38,7 +38,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
                 "\n Uplata za mirovinsko osiguranje na temelju idividualne kapitalizirane štednje iznosti: " + UdioZaDrugiMirovnisnkiStup + "EUR" +
                 "\n BrutoII iznosi: " + BrutoII +"EUR"  +
                 "\n Porezna osnovica iznosi:" + PoreznaOsnovica + "EUR" +
-                "\n Faktor korekcije poreza i prireza iznosi: " + PorezNaDohodak + "EUR"+
+                "\n Iznos poreza na dohodak iznosi " + (PorezNaDohodak*(BrutoII-PoreznaOsnovica)) + "EUR"+
                 "\n Radniku će na račun biti isplačeno: " + NetoIznosZaIsplatuRadniku + "EUR";
         }
 
