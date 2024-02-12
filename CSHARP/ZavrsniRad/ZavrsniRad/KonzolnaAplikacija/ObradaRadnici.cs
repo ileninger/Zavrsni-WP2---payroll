@@ -196,7 +196,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             }
             else
             {
-                Console.WriteLine("Prvo morate unjeti radnike kako biste mogli promljeniti podatke o radniku");
+                Console.WriteLine("Prvo morate unjeti radnike kako biste mogli promljeniti podatke o radniku ");
                 if(Pomocno.UcitajBool("Želite li dodati radnika obračunu? (da ili bilo što drugo za ne): "))
                 {
                     DodajRandika();
@@ -204,7 +204,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 else
                 {
                     Console.WriteLine("Slijedi povratak na glavni izbornik rada s radnicima ");
-                    Thread.Sleep(3500);
+                    Thread.Sleep(3000);
                     PrikaziIzbornik();
                 }
             }
