@@ -69,7 +69,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                     Thread.Sleep(2000);
                     break;
 
-            };
+            }
         }
 
 

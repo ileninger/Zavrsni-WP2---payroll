@@ -39,6 +39,8 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("4. Obriši obračun ");
             Console.WriteLine("5. Povratak na prethodni izbornik");
 
+            Thread.Sleep(3000);
+
             OdabirIzbornikRadaSaObracunima();
 
         }
