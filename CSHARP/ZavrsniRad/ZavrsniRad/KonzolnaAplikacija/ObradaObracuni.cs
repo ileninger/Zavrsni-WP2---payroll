@@ -88,9 +88,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
             o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite iznos osnovnog osobnog odbitaka: ", "Unos mora biti decimalni broj"), 2);
             o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
-            o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak poreza na dohodak: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
+            o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak poreza na dohodak: ", "Unos mora biti decimalni broj ")) / 100), 2);
             
-            o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - o.PorezNaDohodak, 2);
+            o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak*o.PoreznaOsnovica), 2);
             Obracuni.Add(o);
 
         }
@@ -143,31 +143,79 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 case 3:
 
                     o.BrojRadnihSati = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koliko je sati radnik odradio: ", "Broj radnih sati mora biti cijeli broj broj"), 2);
+                    
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 4:
                     o.CijenaRadnogSata = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite cijenu radnog sata radnika: ", "Cijena radnog sata mora biti decimalni broj"), 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 5:
                     o.KoeficijentRadnogMjesta = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koeficijent radnog mjesta ", "Koeficijent radnog mjesta mora biti decimalni broj"), 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 6:
                     o.UdioZaPrviMirovnisnkiStup = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za prvi mirovinski stup: ", "Unos mora biti decimalni broj ")) / 100) * o.BrutoI, 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 7:
                     o.UdioZaDrugiMirovnisnkiStup = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za drugi mirovinski stup: ", "Unos mora biti decimalni broj")) / 100) * o.BrutoI, 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 8:
                     o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite iznos osnovnog osobnog odbitaka: ", "Unos mora biti decimalni broj"), 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
                     o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 9:
                     o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak poreza na dohodak: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
+
+                    //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
+                    o.BrutoI = Math.Round(o.BrojRadnihSati * o.CijenaRadnogSata * o.KoeficijentRadnogMjesta, 2);
+                    o.BrutoII = Math.Round(o.BrutoI - (o.UdioZaPrviMirovnisnkiStup + o.UdioZaDrugiMirovnisnkiStup), 2);
+                    o.PoreznaOsnovica = Math.Round(o.BrutoII - o.OsnovniOsobniOdbitak, 2);
+                    o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak * o.PoreznaOsnovica), 2);
+
                     PrikaziSveObracune();
                     break;
                 case 0:
