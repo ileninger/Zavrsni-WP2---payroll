@@ -26,9 +26,13 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         public void PrikaziIzbornik()
         {
+            Thread.Sleep(2000);
             Console.WriteLine("***********************************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s obračunima ");
             Console.WriteLine("***********************************************************");
+
+            Thread.Sleep(2000);
+
             Console.WriteLine("1. Prikaži sve obračune ");
             Console.WriteLine("2. Dodaj obračun ");
             Console.WriteLine("3. Izmjeni obračun ");
@@ -45,22 +49,27 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 case 1:
                     PrikaziSveObracune();
+                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 2:
                     DodajNoviObracun();
+                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 3:
                     IzmjeniObracun();
+                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 4:
                     ObrisiObracun();
+                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 5:
                     Console.WriteLine("Završili ste s radom na obračunima! ");
+                    Thread.Sleep(2000);
                     break;
 
             }
@@ -238,7 +247,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 else
                 {
                     Console.WriteLine("Slijedi povratak na glavni izbornik rada s obračunima ");
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                 }
             }
