@@ -46,7 +46,7 @@ namespace ZavršniRad.KonzolnaAplikacija
         {
             Console.WriteLine("\n");
             Thread.Sleep(1000);
-
+            Console.WriteLine("*****************************************");
             Console.WriteLine("************Glavni izbornik**************");
             Console.WriteLine("*****************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti ");
