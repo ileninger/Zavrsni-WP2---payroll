@@ -110,7 +110,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
         {
             List<Radnik> radnici = new List<Radnik>();
 
-            while (Pomocno.UcitajBool("Želite li dodati radnika obračunu? (da ili bilo što drugo za ne): "))
+            //while (Pomocno.UcitajBool("Želite li dodati radnika obračunu? (da ili bilo što drugo za ne): "))
             {
                 radnici.Add(DodjeliRadnikaObracunu());
             }
