@@ -39,22 +39,18 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 case 1:
                     PrikaziSvePlace();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 2:
                     DodajPlacu();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 3:
                     UrediPodatkeOPlaci();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 4:
                     ObrisiPlacu();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 5:
@@ -64,7 +60,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             }
         }
 
-        
+
 
         private void PrikaziSvePlace()
         {
@@ -73,12 +69,12 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("***********************************************");
 
             Thread.Sleep(1000);
-            var b = 1;
+            var i = 0;
 
-            foreach (Placa placa in Place)
+            Place.ForEach(s =>
             {
-                Console.WriteLine("{0}. {1}", b++, placa);
-            }
+                Console.WriteLine(++i + "." + s);
+            });
 
             Console.WriteLine("///////////////////////////////////////////////"); ;
         }
@@ -90,23 +86,86 @@ namespace ZavrsniRad.KonzolnaAplikacija
             p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozivni cijeli broj");
             p.NazivPlace = Pomocno.UcitajString("Unesite naziv plaće: ", "Naziv plaće je obavezan ");
 
-            p.Obracun = DodjeliObracunePlaci();
+            p.Obracun = DodijelaObracunPlaci();
+
+            Place.Add(p);
 
         }
-
-        private Obracun DodjeliObracunePlaci()
+        private List<Obracun> DodijeliObracunePlaci()
         {
-            throw new NotImplementedException();
+            List<Obracun> obracun = new List<Obracun>();
+            obracun.Add(DodijelaObracunPlaci());
+            return obracun;
+        }
+        private Obracun DodijelaObracunPlaci()
+        {
+            GlavniIzbornik.ObradaObracuni.PrikaziSveObracune();
+
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obračuna: ", "Nije dobar odabir", 1, GlavniIzbornik.ObradaObracuni.Obracuni.Count());
+
+            return GlavniIzbornik.ObradaObracuni.Obracuni[index - 1];
+
         }
 
         private void UrediPodatkeOPlaci()
         {
-            throw new NotImplementedException();
+            if (Place.Count != 0)
+            {
+                PrikaziSvePlace();
+                int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obračuna: ", "Nije dobar odabir", 1, Place.Count());
+                var placa = Place[index - 1];
+
+                Console.WriteLine("1.Izmjeni šifru plaće ");
+                Console.WriteLine("2.Izmeni naziv plaće ");
+                Console.WriteLine("3.Izmjeni dojeljeni obračun ");
+                Console.WriteLine("4.Odustanite od promjena podataka o plačama");
+
+
+                switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-7 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 1-7 ", 1, 7))
+                {
+                    case 1:
+                        placa.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+                        PrikaziSvePlace();
+                        break;
+                    case 2:
+                        placa.NazivPlace = Pomocno.UcitajString("Unesite novi naziv plaće ", "Naziv plaće je obavezan ");
+                        PrikaziSvePlace();
+                        break;
+                    case 3:
+                        placa.Obracun = DodijelaObracunPlaci();
+                        PrikaziSvePlace();
+                        break;
+                    case 4:
+                        Console.WriteLine("Završili ste s radom na plačama! Slijedi povratak na izbornik! ");
+                        Thread.Sleep(1000);
+                        PrikaziIzbornik();
+                        break;
+
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Prvo morate unjeti plaču kako biste mogli promljeniti podatke o plaći ");
+                if (Pomocno.UcitajBool("Želite li dodati plaču? (da ili bilo što drugo za ne): "))
+                {
+                    DodajPlacu();
+                }
+                else
+                {
+                    Console.WriteLine("Slijedi povratak na glavni izbornik rada s plačama ");
+                    Thread.Sleep(1000);
+                    PrikaziIzbornik();
+                }
+            }
         }
 
         private void ObrisiPlacu()
         {
-            throw new NotImplementedException();
+            PrikaziSvePlace();
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obračuna: ", "Nije dobar odabir", 1, Place.Count());
+            Place.RemoveAt(index - 1);
+
         }
     }
 }
