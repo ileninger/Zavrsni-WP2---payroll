@@ -76,6 +76,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             var o = new Obracun();
 
             o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna: ", "Šifra obračuna mora biti pozivni cijeli broj");
+            o.DatumObracuna = Pomocno.UcitajDatum("Unesite datum obračuna radnika u formatu dd.mm.yyyy ", "Datum obračuna radnika mora biti u formatu dd.mm.yyyy ");
             o.Radnici = DodjeliRadnikeObracunu();
 
             o.BrojRadnihSati = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koliko je sati radnik odradio: ", "Broj radnih sati mora biti cijeli broj broj"), 2);
@@ -136,27 +137,32 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obračuna: ", "Nije dobar odabir", 1, Obracuni.Count());
                 var o = Obracuni[index - 1];
                 Console.WriteLine("1. Izmjeni šifru obračuna ");
-                Console.WriteLine("2. Izmjeni radnika na kojeg se odnosi obračun ");
-                Console.WriteLine("3. Izmjeni broj radnih sati ");
-                Console.WriteLine("4. Izmjeni cijenu radnog sata ");
-                Console.WriteLine("5. Izmjeni koeficijent radnog mjesta ");
-                Console.WriteLine("6. Izmjeni postotak za prvi mirovinski stup ");
-                Console.WriteLine("7. Izmjeni postotak za drugi mirovinski stup ");
-                Console.WriteLine("8. Izmjeni iznos osnovnog osobnog odbitka ");
-                Console.WriteLine("9. Izmjenite postotak poreza na dohodak ");
+                Console.WriteLine("2. Izmjeni datum obračuna ");
+                Console.WriteLine("3. Izmjeni radnika na kojeg se odnosi obračun ");
+                Console.WriteLine("4. Izmjeni broj radnih sati ");
+                Console.WriteLine("5. Izmjeni cijenu radnog sata ");
+                Console.WriteLine("6. Izmjeni koeficijent radnog mjesta ");
+                Console.WriteLine("7. Izmjeni postotak za prvi mirovinski stup ");
+                Console.WriteLine("8. Izmjeni postotak za drugi mirovinski stup ");
+                Console.WriteLine("9. Izmjeni iznos osnovnog osobnog odbitka ");
+                Console.WriteLine("10. Izmjenite postotak poreza na dohodak ");
                 Console.WriteLine("0. Odustanite od promjena podataka o obračunu ");
 
-                switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 0-9 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 0-9 ", 0, 9))
+                switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 0-10 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 0-10 ", 0, 10))
                 {
                     case 1:
                         o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna ", "Šifra obračuna mora biti pozivni cijeli broj");
                         PrikaziSveObracune();
                         break;
                     case 2:
-                        o.Radnici = DodjeliRadnikeObracunu();
+                        o.DatumObracuna = Pomocno.UcitajDatum("Unesite novi datum obračuna radnika u formatu dd.mm.yyyy ", "Datum obračuna radnika mora biti u formatu dd.mm.yyyy ");
                         PrikaziSveObracune();
                         break;
                     case 3:
+                        o.Radnici = DodjeliRadnikeObracunu();
+                        PrikaziSveObracune();
+                        break;
+                    case 4:
 
                         o.BrojRadnihSati = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koliko je sati radnik odradio: ", "Broj radnih sati mora biti cijeli broj broj"), 2);
 
@@ -168,7 +174,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 4:
+                    case 5:
                         o.CijenaRadnogSata = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite cijenu radnog sata radnika: ", "Cijena radnog sata mora biti decimalni broj"), 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
@@ -179,7 +185,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 5:
+                    case 6:
                         o.KoeficijentRadnogMjesta = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite koeficijent radnog mjesta ", "Koeficijent radnog mjesta mora biti decimalni broj"), 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
@@ -190,7 +196,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 6:
+                    case 7:
                         o.UdioZaPrviMirovnisnkiStup = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za prvi mirovinski stup: ", "Unos mora biti decimalni broj ")) / 100) * o.BrutoI, 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
@@ -201,7 +207,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 7:
+                    case 8:
                         o.UdioZaDrugiMirovnisnkiStup = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak za drugi mirovinski stup: ", "Unos mora biti decimalni broj")) / 100) * o.BrutoI, 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
@@ -212,7 +218,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 8:
+                    case 9:
                         o.OsnovniOsobniOdbitak = Math.Round(Pomocno.UcitajDecimalnibroj("Unesite iznos osnovnog osobnog odbitaka: ", "Unos mora biti decimalni broj"), 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
@@ -223,7 +229,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
                         PrikaziSveObracune();
                         break;
-                    case 9:
+                    case 10:
                         o.PorezNaDohodak = Math.Round(((Pomocno.UcitajDecimalnibroj("Unesite postotak poreza na dohodak: ", "Unos mora biti decimalni broj ")) / 100) * o.PoreznaOsnovica, 2);
 
                         //Moramo promjeniti sve ostalo na što utječe  promljenjena varijabla
