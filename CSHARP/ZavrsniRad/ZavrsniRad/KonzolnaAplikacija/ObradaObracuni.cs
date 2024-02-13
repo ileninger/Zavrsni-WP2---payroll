@@ -273,7 +273,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Obracuni.RemoveAt(index - 1); ;
         }
 
-        private void PrikaziSveObracune()
+        public void PrikaziSveObracune()
         {
             Console.WriteLine("************************************************");
             Console.WriteLine("********************Obračuni********************");
