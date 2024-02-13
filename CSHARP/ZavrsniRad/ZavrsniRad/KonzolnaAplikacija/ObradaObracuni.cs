@@ -26,20 +26,17 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         public void PrikaziIzbornik()
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Console.WriteLine("***********************************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s obračunima ");
             Console.WriteLine("***********************************************************");
-
-            Thread.Sleep(2000);
-
             Console.WriteLine("1. Prikaži sve obračune ");
             Console.WriteLine("2. Dodaj obračun ");
             Console.WriteLine("3. Izmjeni obračun ");
             Console.WriteLine("4. Obriši obračun ");
             Console.WriteLine("5. Povratak na prethodni izbornik");
 
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
 
             OdabirIzbornikRadaSaObracunima();
 
@@ -51,27 +48,23 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 case 1:
                     PrikaziSveObracune();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 2:
                     DodajNoviObracun();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 3:
                     IzmjeniObracun();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 4:
                     ObrisiObracun();
-                    Thread.Sleep(2000);
                     PrikaziIzbornik();
                     break;
                 case 5:
                     Console.WriteLine("Završili ste s radom na obračunima! ");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     break;
 
             }
@@ -104,6 +97,16 @@ namespace ZavrsniRad.KonzolnaAplikacija
             o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak*o.PoreznaOsnovica), 2);
             Obracuni.Add(o);
 
+            Thread.Sleep(500);
+            Console.WriteLine("\n");
+            Console.WriteLine("Slijedi prikaz provedenog obracuna ");
+
+            PrikaziSveObracune();
+
+            Thread.Sleep(1000);
+
+
+
         }
 
         private List<Radnik> DodjeliRadnikeObracunu()
@@ -111,9 +114,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
             List<Radnik> radnici = new List<Radnik>();
 
             //while (Pomocno.UcitajBool("Želite li dodati radnika obračunu? (da ili bilo što drugo za ne): "))
-            {
-                radnici.Add(DodjeliRadnikaObracunu());
-            }
+
+            radnici.Add(DodjeliRadnikaObracunu());
+
             return radnici;
 
         }
@@ -249,7 +252,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 else
                 {
                     Console.WriteLine("Slijedi povratak na glavni izbornik rada s obračunima ");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                 }
             }

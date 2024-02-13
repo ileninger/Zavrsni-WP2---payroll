@@ -27,7 +27,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s radnicima ");
             Console.WriteLine("**********************************************************");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
 
             Console.WriteLine("1. Prikaži sve radnike ");
             Console.WriteLine("2. Dodaj radnika ");
@@ -35,7 +35,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("4. Obriši radnika ");
             Console.WriteLine("5. Povratak na prethodni izbornik ");
 
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
 
             OdabirIzbornikRadaSaPodacimaORadnicima();
         }
@@ -46,27 +46,27 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 case 1:
                     PrikaziSveRadnike();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 2:
                     DodajRandika();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 3:
                     UrediPodatkeORadniku();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 4:
                     ObrisiRadnika();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 5:
                     Console.WriteLine("Završili ste s radom na radnicima. ");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     break;
 
             }
@@ -80,7 +80,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("****************Uneseni radnici****************");
             Console.WriteLine("***********************************************");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
 
             var b = 1;
 
@@ -218,7 +218,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 else
                 {
                     Console.WriteLine("Slijedi povratak na glavni izbornik rada s radnicima ");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                 }
             }
