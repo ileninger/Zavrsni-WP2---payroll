@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZavršniRad.KonzolnaAplikacija;
 using ZavrsniRad.KonzolnaAplikacija.Model;
+using ZavršniRad.KonzolnaAplikacija.Model;
 
 namespace ZavrsniRad.KonzolnaAplikacija
 {
     internal class ObradaPlace
     {
         public List<Placa> Place { get; }
+        private GlavniIzbornik GlavniIzbornik;
 
         public void PrikaziIzbornik()
         {
@@ -62,12 +64,37 @@ namespace ZavrsniRad.KonzolnaAplikacija
             }
         }
 
+        
+
         private void PrikaziSvePlace()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***********************************************");
+            Console.WriteLine("*****************Unesene plače*****************");
+            Console.WriteLine("***********************************************");
+
+            Thread.Sleep(1000);
+            var b = 1;
+
+            foreach (Placa placa in Place)
+            {
+                Console.WriteLine("{0}. {1}", b++, placa);
+            }
+
+            Console.WriteLine("///////////////////////////////////////////////"); ;
         }
 
         private void DodajPlacu()
+        {
+            var p = new Placa();
+
+            p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozivni cijeli broj");
+            p.NazivPlace = Pomocno.UcitajString("Unesite naziv plaće: ", "Naziv plaće je obavezan ");
+
+            p.Obracun = DodjeliObracunePlaci();
+
+        }
+
+        private Obracun DodjeliObracunePlaci()
         {
             throw new NotImplementedException();
         }

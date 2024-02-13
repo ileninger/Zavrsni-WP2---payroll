@@ -15,7 +15,7 @@ namespace ZavršniRad.KonzolnaAplikacija
 
         public ObradaPlace ObradaPlace;
         
-        public ObradaObracuni ObradaObracuni;
+        public ObradaObracuni ObradaObracuni { get; }
         
 
         public GlavniIzbornik()
