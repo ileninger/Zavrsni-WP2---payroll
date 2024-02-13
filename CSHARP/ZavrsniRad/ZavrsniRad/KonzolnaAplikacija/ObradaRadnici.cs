@@ -27,8 +27,6 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti rada s radnicima ");
             Console.WriteLine("**********************************************************");
 
-            Thread.Sleep(1000);
-
             Console.WriteLine("1. Prikaži sve radnike ");
             Console.WriteLine("2. Dodaj radnika ");
             Console.WriteLine("3. Izmjeni  podatke o radniku ");
@@ -46,22 +44,18 @@ namespace ZavrsniRad.KonzolnaAplikacija
             {
                 case 1:
                     PrikaziSveRadnike();
-                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 2:
                     DodajRandika();
-                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 3:
                     UrediPodatkeORadniku();
-                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 4:
                     ObrisiRadnika();
-                    Thread.Sleep(1000);
                     PrikaziIzbornik();
                     break;
                 case 5:
@@ -204,6 +198,8 @@ namespace ZavrsniRad.KonzolnaAplikacija
                         PrikaziSveRadnike();
                         break;
                     case 7:
+                        Console.WriteLine("Završili ste s radom na radnicima! Slijedi povratak na glavni izbornik! ");
+                        Thread.Sleep(1000);
                         PrikaziSveRadnike();
                         break;
                 }

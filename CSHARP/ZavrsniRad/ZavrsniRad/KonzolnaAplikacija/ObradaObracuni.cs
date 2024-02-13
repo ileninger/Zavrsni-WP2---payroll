@@ -63,7 +63,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                     PrikaziIzbornik();
                     break;
                 case 5:
-                    Console.WriteLine("Završili ste s radom na obračunima! ");
+                    Console.WriteLine("Završili ste s radom na obračunima! Slijedi povratak na glavni izbornik! ");
                     Thread.Sleep(1000);
                     break;
 
@@ -97,13 +97,12 @@ namespace ZavrsniRad.KonzolnaAplikacija
             o.NetoIznosZaIsplatuRadniku = Math.Round(o.BrutoII - (o.PorezNaDohodak*o.PoreznaOsnovica), 2);
             Obracuni.Add(o);
 
-            Thread.Sleep(500);
             Console.WriteLine("\n");
             Console.WriteLine("Slijedi prikaz provedenog obracuna ");
-
+            Thread.Sleep(1000);
             PrikaziSveObracune();
 
-            Thread.Sleep(1000);
+            
 
 
 
@@ -236,7 +235,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
                         PrikaziSveObracune();
                         break;
                     case 0:
-                        PrikaziSveObracune();
+                        Console.WriteLine("Odustali ste od promjena na obračunima! Slijedi povratak na glavni izbornik! ");
+                        Thread.Sleep(1000);
+                        PrikaziIzbornik();
                         break;
 
                 }
