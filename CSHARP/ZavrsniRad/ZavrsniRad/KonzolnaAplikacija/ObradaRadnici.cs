@@ -198,9 +198,9 @@ namespace ZavrsniRad.KonzolnaAplikacija
                         PrikaziSveRadnike();
                         break;
                     case 7:
-                        Console.WriteLine("Završili ste s radom na radnicima! Slijedi povratak na glavni izbornik! ");
+                        Console.WriteLine("Završili ste s radom na radnicima! Slijedi povratak na izbornik! ");
                         Thread.Sleep(1000);
-                        PrikaziSveRadnike();
+                        PrikaziIzbornik();
                         break;
                 }
             }
