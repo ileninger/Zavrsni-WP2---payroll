@@ -13,7 +13,7 @@ namespace ZavršniRad.KonzolnaAplikacija
     {
         public ObradaRadnici ObradaRadnici { get; }
 
-        public ObradaPlace ObradaPlace;
+        public ObradaPlace ObradaPlace { get;}
         
         public ObradaObracuni ObradaObracuni { get; }
         

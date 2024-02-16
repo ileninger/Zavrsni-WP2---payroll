@@ -13,7 +13,10 @@ namespace ZavrsniRad.KonzolnaAplikacija
     {
         public List<Placa> Place { get; }
         private GlavniIzbornik GlavniIzbornik;
-
+        //public ObradaPlace(GlavniIzbornik glavniIzbornik) : this()
+        //{
+        //    this.GlavniIzbornik = glavniIzbornik;
+        //}
         public void PrikaziIzbornik()
         {
             Console.WriteLine("**********************************************************");
