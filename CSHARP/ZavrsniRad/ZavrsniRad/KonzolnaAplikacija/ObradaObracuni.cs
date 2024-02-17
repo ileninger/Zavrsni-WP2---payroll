@@ -70,7 +70,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
             }
         }
 
-        private void DodajNoviObracun()
+        public void DodajNoviObracun()
         {
 
             var o = new Obracun();
