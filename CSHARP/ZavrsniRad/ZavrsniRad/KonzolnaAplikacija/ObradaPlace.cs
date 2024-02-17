@@ -13,10 +13,19 @@ namespace ZavrsniRad.KonzolnaAplikacija
     {
         public List<Placa> Place { get; }
         private GlavniIzbornik GlavniIzbornik;
-        //public ObradaPlace(GlavniIzbornik glavniIzbornik) : this()
-        //{
-        //    this.GlavniIzbornik = glavniIzbornik;
-        //}
+
+        public ObradaPlace( GlavniIzbornik glavniIzbornik ) : this () 
+        {
+            this.GlavniIzbornik = glavniIzbornik;
+        }
+
+
+        public ObradaPlace ()
+        {
+            Place = new List<Placa> ();
+        }
+
+
         public void PrikaziIzbornik()
         {
             Console.WriteLine("**********************************************************");
@@ -31,14 +40,13 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("4. Obriši plaču ");
             Console.WriteLine("5. Povratak na prethodni izbornik ");
 
-            Thread.Sleep(3000);
 
             OdabirIzbornikRadaSaPlacama();
         }
 
         private void OdabirIzbornikRadaSaPlacama()
         {
-            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s radnicima: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
+            switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-5 za rad s plačama: ", "Odabreni broj mora biti između 1-5 ", 1, 5))
             {
                 case 1:
                     PrikaziSvePlace();
@@ -58,7 +66,6 @@ namespace ZavrsniRad.KonzolnaAplikacija
                     break;
                 case 5:
                     Console.WriteLine("Završili ste s radom na plačama. ");
-                    Thread.Sleep(2000);
                     break;
             }
         }
@@ -94,20 +101,19 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Place.Add(p);
 
         }
-        private List<Obracun> DodijeliObracunePlaci()
+
+        private List<Obracun> DodijelaObracunPlaci()
         {
-            List<Obracun> obracun = new List<Obracun>();
-            obracun.Add(DodijelaObracunPlaci());
-            return obracun;
+            List<Obracun> obracuni = new List<Obracun>();
+            obracuni.Add(DodjeliObracunPlaci());
+            return obracuni;
         }
-        private Obracun DodijelaObracunPlaci()
+
+        private Obracun DodjeliObracunPlaci()
         {
             GlavniIzbornik.ObradaObracuni.PrikaziSveObracune();
-
-            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obračuna: ", "Nije dobar odabir", 1, GlavniIzbornik.ObradaObracuni.Obracuni.Count());
-
+            int index = Pomocno.UcitajRasponBrojeva("Odaberi redni broj obracuna: ", "Nije dobar odabir", 1, GlavniIzbornik.ObradaObracuni.Obracuni.Count());
             return GlavniIzbornik.ObradaObracuni.Obracuni[index - 1];
-
         }
 
         private void UrediPodatkeOPlaci()
@@ -127,7 +133,7 @@ namespace ZavrsniRad.KonzolnaAplikacija
                 switch (Pomocno.UcitajRasponBrojeva("Odaberite broj između između 1-7 za rad s izbornikom promjena podataka o radniku: ", "Odabreni broj mora biti između 1-7 ", 1, 7))
                 {
                     case 1:
-                        placa.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika ", "Šifra radnika mora biti pozivni cijeli broj");
+                        placa.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće ", "Šifra radnika mora biti pozivni cijeli broj");
                         PrikaziSvePlace();
                         break;
                     case 2:
