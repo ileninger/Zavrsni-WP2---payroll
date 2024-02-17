@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 using ZavrsniRad.KonzolnaAplikacija;
 using ZavršniRad.KonzolnaAplikacija.Model;
 
+
+
+/*
+Konzolna aplikacija za obračun plaćae rađena kao završini rad na WEB Programiranju (u ustanovi EDUNOVA) od polaznika Ivan Leninger
+pod mentorstvom Tomislava Jakopeca. Aplikacija u ovom trenutku prima podatke o radniku te podatke nužne za obračun te natemlju njih vrti obračun. Obračun je moguće dodjeliti na jednu ili više plaća
+*/
+
 namespace ZavršniRad.KonzolnaAplikacija
 {
     internal class GlavniIzbornik
@@ -31,14 +38,20 @@ namespace ZavršniRad.KonzolnaAplikacija
 
 
         }
-
-       
+              
 
         private void PozdravnaPoruka()
         {
-            Console.WriteLine("***************************************");
-            Console.WriteLine("********OBRACUN PLAČA BY LENY_V1*******");
-            Console.WriteLine("***************************************");
+            Console.WriteLine("****************************************");
+            Console.WriteLine("********OBRACUN PLAČA BY LENY_V1********");
+            Console.WriteLine("****************************************");
+            Console.WriteLine("\n");
+            Console.WriteLine("****************************************");
+            Console.WriteLine("*********polaznik:Ivan Leninger*********");
+            Console.WriteLine("*********mentor:Tomislav Jakopec********");
+            Console.WriteLine("************POWER BY EDUNOVA************");
+            Console.WriteLine("\n");
+
         }
         //**************GLAVNI IZBORNIK**************
         public void GlavniIzbornikSucelje()
@@ -50,9 +63,7 @@ namespace ZavršniRad.KonzolnaAplikacija
             Console.WriteLine("*****************************************");
             Console.WriteLine("Odaberite jedanu od ponuđenih mogučnosti ");
             Console.WriteLine("*****************************************");
-            
-            Thread.Sleep(1000);
-
+            Console.WriteLine("\n");
             Console.WriteLine("1. Rad s podacima o radnicima ");
             Console.WriteLine("2. Rad s obračunima ");
             Console.WriteLine("3. Rad s plačama ");
