@@ -12,11 +12,10 @@ namespace ZavršniRad.KonzolnaAplikacija
     internal class GlavniIzbornik
     {
         public ObradaRadnici ObradaRadnici { get; }
-
-        public ObradaPlace ObradaPlace { get;}
-        
+       
         public ObradaObracuni ObradaObracuni { get; }
-        
+
+        public ObradaPlace ObradaPlace { get; }
 
         public GlavniIzbornik()
         {
@@ -24,7 +23,7 @@ namespace ZavršniRad.KonzolnaAplikacija
             Pomocno.Test = true;
             ObradaRadnici = new ObradaRadnici();
             ObradaObracuni = new ObradaObracuni(this);
-            ObradaPlace = new ObradaPlace();
+            ObradaPlace = new ObradaPlace(this);
 
             PozdravnaPoruka();
             GlavniIzbornikSucelje();
