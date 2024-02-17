@@ -96,7 +96,24 @@ namespace ZavrsniRad.KonzolnaAplikacija
             p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozivni cijeli broj");
             p.NazivPlace = Pomocno.UcitajString("Unesite naziv plaće: ", "Naziv plaće je obavezan ");
 
-            p.Obracun = DodijelaObracunPlaci();
+            if (GlavniIzbornik.ObradaObracuni.Obracuni.Count() != 0)
+            {
+                p.Obracun = DodijelaObracunPlaci();
+            }
+            else
+            {
+                Console.WriteLine("Nepostoji obračun! ");
+                if (Pomocno.UcitajBool("Želite li dodati novi obračun? (da ili bilo što drugo za ne): "))
+                {
+                    GlavniIzbornik.ObradaObracuni.DodajNoviObracun();
+
+                }
+                else
+                {
+                    PrikaziIzbornik();
+                }
+
+            }
 
             Place.Add(p);
 
@@ -104,9 +121,11 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
         private List<Obracun> DodijelaObracunPlaci()
         {
-            List<Obracun> obracuni = new List<Obracun>();
-            obracuni.Add(DodjeliObracunPlaci());
-            return obracuni;
+
+                List<Obracun> obracuni = new List<Obracun>();
+                obracuni.Add(DodjeliObracunPlaci());
+                return obracuni;
+
         }
 
         private Obracun DodjeliObracunPlaci()
