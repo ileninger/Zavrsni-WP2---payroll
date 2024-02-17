@@ -86,12 +86,33 @@ namespace ZavrsniRad.KonzolnaAplikacija
             Console.WriteLine("///////////////////////////////////////////////");
         }
 
+        private bool PostojiRadnikSaSifrom(int sifra)
+        {
+            return Radnici.Any(radnik => radnik.Sifra == sifra);
+        }
+
         private void DodajRandika()
         {
             var radnik = new Radnik();
             bool IspravnostOiB = false;
             bool IspravnostIban = false;
-            radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika: ", "Šifra radnika mora biti pozivni cijeli broj");
+
+
+            do
+            {
+                radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika: ", "Šifra radnika mora biti pozitivan cijeli broj");
+
+                if (PostojiRadnikSaSifrom(radnik.Sifra))
+                {
+                    Console.WriteLine("Radnik s tom šifrom već postoji. Molimo unesite novu šifru.");
+                }
+                else
+                {
+                    break;
+                }
+            } while (true);
+
+            //radnik.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru radnika: ", "Šifra radnika mora biti pozivni cijeli broj");
             radnik.Ime = Pomocno.UcitajString("Unesite ime radnika: ", "Ime radnika je obavezno ");
             radnik.Prezime = Pomocno.UcitajString("Unesite prezime radnika: ", "Prezime radnika je obavezno ");
 
