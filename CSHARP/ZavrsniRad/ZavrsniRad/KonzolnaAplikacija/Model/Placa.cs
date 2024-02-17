@@ -9,7 +9,7 @@ namespace ZavrsniRad.KonzolnaAplikacija.Model
 {
     internal class Placa:Entitet
     {
-        public Obracun Obracun { get; set; }
+        public List <Obracun> Obracun { get; set; }
         public Radnik Radnik{ get; set; }
 
         public string NazivPlace { get; set; }
