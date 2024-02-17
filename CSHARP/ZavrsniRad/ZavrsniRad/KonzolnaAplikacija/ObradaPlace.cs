@@ -88,12 +88,30 @@ namespace ZavrsniRad.KonzolnaAplikacija
 
             Console.WriteLine("///////////////////////////////////////////////"); ;
         }
-
+        private bool PostojiPlacaSaSifrom(int sifra)
+        {
+            return Place.Any(placa => placa.Sifra == sifra);
+                
+        }
         private void DodajPlacu()
         {
             var p = new Placa();
 
-            p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozivni cijeli broj");
+            do
+            {
+                p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozitivan cijeli broj");
+
+                if (PostojiPlacaSaSifrom(p.Sifra))
+                {
+                    Console.WriteLine("Plaća s tom šifrom već postoji. Molimo unesite novu šifru.");
+                }
+                else
+                {
+                    break;
+                }
+            } while (true);
+
+            //p.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru plaće: ", "Šifra plaće mora biti pozivni cijeli broj");
             p.NazivPlace = Pomocno.UcitajString("Unesite naziv plaće: ", "Naziv plaće je obavezan ");
 
             if (GlavniIzbornik.ObradaObracuni.Obracuni.Count() != 0)
