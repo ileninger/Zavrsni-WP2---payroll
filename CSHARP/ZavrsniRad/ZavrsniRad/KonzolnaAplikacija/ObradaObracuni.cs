@@ -70,12 +70,32 @@ namespace ZavrsniRad.KonzolnaAplikacija
             }
         }
 
+        private bool PostojiObracunSaSifrom(int sifra)
+        {
+            return Obracuni.Any(obracun => obracun.Sifra == sifra);
+        }
+
         public void DodajNoviObracun()
         {
 
             var o = new Obracun();
+            bool ispravnostDatum = false;
 
-            o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna: ", "Šifra obračuna mora biti pozivni cijeli broj");
+            do
+            {
+                o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna: ", "Šifra obračuna mora biti pozitivan cijeli broj");
+
+                if (PostojiObracunSaSifrom(o.Sifra))
+                {
+                    Console.WriteLine("Obračun s tom šifrom već postoji. Molimo unesite novu šifru.");
+                }
+                else
+                {
+                    break;
+                }
+            } while (true);
+
+            //o.Sifra = Pomocno.UcitajCijeliBroj("Unesite šifru obračuna: ", "Šifra obračuna mora biti pozivni cijeli broj");
             o.DatumObracuna = Pomocno.UcitajDatum("Unesite datum obračuna radnika u formatu dd.mm.yyyy ", "Datum obračuna radnika mora biti u formatu dd.mm.yyyy ");
             o.Radnici = DodjeliRadnikeObracunu();
 
