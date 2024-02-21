@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using WebApi_ZavrsniRad.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,11 @@ builder.Services.AddSwaggerGen(sgo =>
     sgo.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
 
 });
+
+//Dodavanje baze podataka
+builder.Services.AddDbContext<ObracunPlacaContext>(o => 
+   o.UseSqlServer(builder.Configuration.GetConnectionString(name: "ObracunPlacaContext"))
+);
 
 var app = builder.Build();
 
