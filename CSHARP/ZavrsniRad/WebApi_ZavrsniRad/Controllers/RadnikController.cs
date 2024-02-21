@@ -36,7 +36,7 @@ namespace WebApi_ZavrsniRad.Controllers
         [HttpGet]
         public IActionResult Get ()
         {
-            return new JsonResult(_context.Radnici.ToList()); ;
+            return new JsonResult(_context.Radnici.ToList());
         }
 
     }

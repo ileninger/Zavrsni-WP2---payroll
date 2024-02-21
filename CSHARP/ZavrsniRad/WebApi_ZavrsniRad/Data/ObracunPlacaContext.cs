@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using WebApi_ZavrsniRad.Models;
 
 namespace WebApi_ZavrsniRad.Data
@@ -12,14 +13,16 @@ namespace WebApi_ZavrsniRad.Data
         /// Konstruktor proslijeđujemo konstruktor gore
         /// </summary>
         /// <param name="options"></param>
-        public ObracunPlacaContext(DbContextOptions<ObracunPlacaContext> options):
-            base(options)
+        public ObracunPlacaContext(DbContextOptions<ObracunPlacaContext> options)
+            :base(options)
         {
 
         }
         /// <summary>
         /// Radnici u bazi
         /// </summary>
+
+        [Key]
         public DbSet<Radnik> Radnici { get; set; }
 
     }
