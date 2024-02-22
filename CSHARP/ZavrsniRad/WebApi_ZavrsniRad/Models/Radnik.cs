@@ -11,7 +11,15 @@ namespace WebApi_ZavrsniRad.Models
         /// Ime radnika u bazi 
         /// </summary>
         [Required(ErrorMessage ="Ime radnika je obavezno")]
-        public string Ime { get; set; }
+        public string? Ime { get; set; }
+
+        public string? Prezime { get; set; }
+
+        public string? OiB { get; set; }
+
+        public DateTime? DatumZaposlenja { get; set; }
+
+        public string? Iban { get; set; }
     }
 }
 

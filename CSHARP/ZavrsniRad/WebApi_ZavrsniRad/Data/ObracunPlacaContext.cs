@@ -12,7 +12,7 @@ namespace WebApi_ZavrsniRad.Data
         /// <summary>
         /// Konstruktor proslijeđujemo konstruktor gore
         /// </summary>
-        /// <param name="options"></param>
+        /// <param ="options"></param>
         public ObracunPlacaContext(DbContextOptions<ObracunPlacaContext> options)
             :base(options)
         {
@@ -22,7 +22,6 @@ namespace WebApi_ZavrsniRad.Data
         /// Radnici u bazi
         /// </summary>
 
-        [Key]
         public DbSet<Radnik> Radnici { get; set; }
 
     }
