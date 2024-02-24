@@ -4,7 +4,6 @@ go
 drop database if exists ObracunPlace;
 go
 
-
 create database ObracunPlace;
 go
 alter database ObracunPlace collate Croatian_CI_AS;
