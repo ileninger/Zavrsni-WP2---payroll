@@ -56,58 +56,136 @@ namespace WebApi_ZavrsniRad.Controllers
             }
         }
 
+
         /// <summary>
-        /// Mijenja podatke postojećeg smjera u bazi
+        /// Dodaje novog radnika u bazu
+        /// </summary>
+        /// <remarks>
+        ///     POST api/v1/Smjer
+        ///     {naziv: "Primjer radnika"}
+        /// </remarks>
+        /// <param name="radnik">Smjer za unijeti u JSON formatu</param>
+        /// <response code="201">Kreirano</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Baza nedostupna iz razno raznih razloga</response> 
+        /// <returns>Smjer s šifrom koju je dala baza</returns>
+        [HttpPost]
+        public IActionResult Post(Radnik radnik)
+        {
+            if (!ModelState.IsValid || radnik == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _context.Radnici.Add(radnik);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, radnik);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    ex.Message);
+            }
+        }
+        /// <summary>
+        /// Mijenja podatke postojećeg radnika u bazi
         /// </summary>
         /// <remarks>
         /// Primjer upita:
         ///
-        ///    PUT api/v1/smjer/1
+        ///    PUT api/v1/radnik/1
         ///
         /// {
         ///  "sifra": 0,
-        ///  "naziv": "Novi naziv",
-        ///  "trajanje": 120,
-        ///  "cijena": 890.22,
-        ///  "upisnina": 0,
-        ///  "verificiran": true
+        ///  "ime": "Novo ime",
+        ///  "prezime": "Novo prezime",
+        ///  "Datum zaposlenja": 01.01.2022.,
+        ///  "OiB": "74203150129",
+        ///  "Iban ": "HR"
         /// }
         ///
         /// </remarks>
         /// <param name="sifra">Šifra smjera koji se mijenja</param>  
-        /// <param name="radnik">Smjer za unijeti u JSON formatu</param>  
+        /// <param name="smjer">Smjer za unijeti u JSON formatu</param>  
         /// <returns>Svi poslani podaci od smjera koji su spremljeni u bazi</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="204">Nema u bazi smjera kojeg želimo promijeniti</response>
         /// <response code="415">Nismo poslali JSON</response> 
         /// <response code="503">Baza nedostupna</response> 
-        //[HttpPut]
-        //[Route("{sifra:int}")]
 
-        //public IActionResult Put(int sifra, Radnik radnik)
-        //{
-        //    if( sifra <=0 || !ModelState.IsValid || radnik == null ) 
-        //    {
-        //        return BadRequest();
-        //    }
-        //    try
-        //    {
-        //        var RadnikIzBaze = _context.Radnici.Find(sifra);
-        //        if(RadnikIzBaze == null)
-        //        {
-        //            return StatusCode(StatusCodes.Status204NoContent, sifra);
-        //        }
-        //        RadnikIzBaze.Ime = radnik.Ime;
+        [HttpPut]
+        [Route("{sifra:int}")]
+        public IActionResult Put(int sifra, Radnik radnik)
+        {
+            if (sifra <= 0 || !ModelState.IsValid || radnik == null)
+            {
+                return BadRequest();
+            }
 
-        //        _context.Radnici.Update(RadnikIzBaze);
-        //        _context.SaveChanges();
-                
-        //    }catch(Exception ex) 
-        //    {
-        //        return StatusCode(StatusCodes.Status503ServiceUnavailable,ex.Message);
-        //    }
 
-        //}
+            try
+            {
 
+
+                var RadnikIzBaze = _context.Radnici.Find(sifra);
+
+                if (RadnikIzBaze == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent, sifra);
+                }
+
+
+                // inače ovo rade mapperi
+                // za sada ručno
+                RadnikIzBaze.Ime = radnik.Ime;
+                RadnikIzBaze.Prezime = radnik.Prezime;
+                RadnikIzBaze.OiB = radnik.OiB;
+                RadnikIzBaze.DatumZaposlenja = radnik.DatumZaposlenja;
+                RadnikIzBaze.Iban = radnik.Iban;
+
+                _context.Radnici.Update(RadnikIzBaze);
+                _context.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, RadnikIzBaze);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Delete(int sifra)
+        {
+            if (!ModelState.IsValid || sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var RadnikIzbaze = _context.Radnici.Find(sifra);
+
+                if (RadnikIzbaze == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent, sifra);
+                }
+
+                _context.Radnici.Remove(RadnikIzbaze);
+                _context.SaveChanges();
+
+                return new JsonResult("{\"poruka\": \"Obrisano\"}"); // ovo nije baš najbolja praksa ali da znake kako i to može
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    ex.Message);
+            }
+
+        }
     }
 }
