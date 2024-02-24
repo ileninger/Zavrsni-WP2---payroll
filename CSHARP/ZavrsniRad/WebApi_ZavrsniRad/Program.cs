@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen(sgo =>
   // čitati https://devintxcontent.blob.core.windows.net/showcontent/Speaker%20Presentations%20Fall%202017/Web%20API%20Best%20Practices.pdf
     var o = new Microsoft.OpenApi.Models.OpenApiInfo()
     {
-        Title = "Obracun plača WebApi",
+        Title = "Obracun placa WebApi",
         Version = "v1",
         Contact = new Microsoft.OpenApi.Models.OpenApiContact()
         {
