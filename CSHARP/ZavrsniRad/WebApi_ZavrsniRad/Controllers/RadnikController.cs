@@ -177,7 +177,7 @@ namespace WebApi_ZavrsniRad.Controllers
                 _context.Radnici.Remove(RadnikIzbaze);
                 _context.SaveChanges();
 
-                return new JsonResult("{\"poruka\": \"Obrisano\"}"); // ovo nije baš najbolja praksa ali da znake kako i to može
+                return new JsonResult(new { poruka = "Obrisano" });
 
             }
             catch (Exception ex)
