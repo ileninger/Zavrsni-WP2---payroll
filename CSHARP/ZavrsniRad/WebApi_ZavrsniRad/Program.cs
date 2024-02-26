@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen(sgo =>
             Email = "ileninger@live.com",
             Name = "Ivan Leninger"
         },
-        Description = "Ovo je dokumentacija za Obračun plača API",
+        Description = "Ovo je dokumentacija za Obracun placa API",
         License = new Microsoft.OpenApi.Models.OpenApiLicense()
         {
             Name = "Edukacijska licenca"
