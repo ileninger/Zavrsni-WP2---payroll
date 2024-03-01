@@ -54,6 +54,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseStaticFiles();
 
 app.UseDefaultFiles();
 app.UseDeveloperExceptionPage();
