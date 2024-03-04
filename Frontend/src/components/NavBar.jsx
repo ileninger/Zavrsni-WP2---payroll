@@ -29,8 +29,8 @@ function NavBar() {
               >
                 Radnici
             </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Obračuni</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Plače</NavDropdown.Item>
+              <NavDropdown.Item>Obračuni</NavDropdown.Item>
+              <NavDropdown.Item>Plače</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
