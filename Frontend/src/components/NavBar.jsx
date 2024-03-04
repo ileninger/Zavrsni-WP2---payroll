@@ -24,12 +24,14 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Izbornik" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Radnici</NavDropdown.Item>
+              <NavDropdown.Item 
+                onClick={()=>navigate(RoutesNames.RADNICI_PREGLED)}
+              >
+                Radnici
+            </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Obračuni</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Plače</NavDropdown.Item>
-              <NavDropdown.Divider />
             </NavDropdown>
-            
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className='justify-content-end'>
