@@ -1,15 +1,28 @@
-use master;
-go
+-- use master;
+-- go
 
-drop database if exists ObracunPlace;
-go
+-- drop database if exists ObracunPlace;
+-- go
 
-create database ObracunPlace;
-go
-alter database ObracunPlace collate Croatian_CI_AS;
-go
+-- create database ObracunPlace;
+-- go
+-- alter database ObracunPlace collate Croatian_CI_AS;
+-- go
 
-use ObracunPlace;
+-- use ObracunPlace;
+
+SELECT name, collation_name FROM sys.databases;
+GO
+-- Doma primjeniti na ime svoje baze 3 puta
+ALTER DATABASE db_aa599e_ileninger SET SINGLE_USER WITH
+ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE db_aa599e_ileninger COLLATE Croatian_CI_AS;
+GO
+ALTER DATABASE db_aa599e_ileninger SET MULTI_USER;
+GO
+SELECT name, collation_name FROM sys.databases;
+GO
 
 create table Radnici (
 	Sifra int not null primary key identity (1,1),
