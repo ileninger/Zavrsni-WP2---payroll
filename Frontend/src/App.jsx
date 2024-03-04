@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom"
 import Pocetna from "./pages/Pocetna"
+import { RoutesNames } from "./constants"
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path={'/'} element ={<Pocetna/>} />
+        <Route path={RoutesNames.HOME} element ={<Pocetna/>} />
       </Routes>
     </>
   )
