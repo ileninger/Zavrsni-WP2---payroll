@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
+import RadnikService from "../../services/RadnikService";
 
 
 export default function Radnici (){
+
+    const [radnici,setRadnici] = useState ();
+
+    async function dohvatiRadnike (){
+        await RadnikService.getRadnici()
+        .then((res)=>{
+            setRadnici(res.data);
+        })
+        .catch((e)=>{
+            alert(e);
+        });
+    } 
+
+    useEffect(()=>{
+        dohvatiRadnike();
+    },[]);
 
     return (
         <Container>
