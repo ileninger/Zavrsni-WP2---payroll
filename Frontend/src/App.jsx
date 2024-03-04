@@ -1,14 +1,13 @@
-import { useState } from 'react'
-
-import { BrowserRouter } from 'react-router-dom'
-
-
+import { Route, Routes } from "react-router-dom"
+import Pocetna from "./pages/Pocetna"
 
 function App() {
 
   return (
     <>
-      Hello World
+      <Routes>
+        <Route path={'/'} element ={<Pocetna/>} />
+      </Routes>
     </>
   )
 }
