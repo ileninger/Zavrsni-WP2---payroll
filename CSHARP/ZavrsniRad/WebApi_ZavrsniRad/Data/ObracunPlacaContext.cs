@@ -23,7 +23,7 @@ namespace WebApi_ZavrsniRad.Data
         /// </summary>
 
         public DbSet<Radnik> Radnici { get; set; }
-        public DbSet<Obracun> Obracuni { get; set; }
+        //public DbSet<Obracun> Obracuni { get; set; }
 
     }
 }

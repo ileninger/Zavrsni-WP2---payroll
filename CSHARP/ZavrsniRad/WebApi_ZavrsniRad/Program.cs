@@ -34,6 +34,15 @@ builder.Services.AddSwaggerGen(sgo =>
     sgo.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
 
 });
+// Svi se od svuda na sve moguće načine mogu spojitina naš API
+builder.Services.AddCors(opcije =>
+{
+    opcije.AddPolicy("CorsPolicy",
+        builder =>
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+    );
+
+});
 
 //Dodavanje baze podataka
 builder.Services.AddDbContext<ObracunPlacaContext>(o => 
@@ -55,6 +64,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.UseStaticFiles();
+
+app.UseCors("CorsPolicy");
 
 app.UseDefaultFiles();
 app.UseDeveloperExceptionPage();
