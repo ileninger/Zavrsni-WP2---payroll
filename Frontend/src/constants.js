@@ -3,3 +3,7 @@ export const RoutesNames = {
     RADNICI_PREGLED:'/radnici'
 
 };
+
+export const App = {
+    DEV: true,
+};

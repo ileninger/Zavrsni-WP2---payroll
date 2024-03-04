@@ -29,11 +29,24 @@ export default function Radnici (){
                         <th>Ime</th>
                         <th>Prezime</th>
                         <th>OiB</th>
-                        <th>Datum zaposlenja</th>
+                        <th>Datumzaposlenja</th>
                         <th>IBAN</th>
                         <th>Akcija</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {radnici && radnici.map((radnik,index)=>(
+                        <tr key={index}>
+                            <td>{radnik.ime}</td>
+                            <td>{radnik.prezime}</td>
+                            <td>{radnik.oiB}</td>
+                            <td>{radnik.datumZaposlenja}</td>
+                            <td>{radnik.iban}</td>
+                            <td>AKCIJA</td>
+
+                        </tr>
+                    ))}
+                </tbody>
             </Table>
         </Container>
 
