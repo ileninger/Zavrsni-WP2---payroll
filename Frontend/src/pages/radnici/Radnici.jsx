@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
 import { Link } from "react-router-dom";
-import { MdPersonAddAlt1 } from "react-icons/md";
+import { FaAddressCard } from "react-icons/fa";
+
 import { RoutesNames } from "../../constants";
 
 export default function Radnici (){
@@ -26,9 +27,10 @@ export default function Radnici (){
     return (
         <Container>
             <Link to={RoutesNames.RADNICI_DODAJ} className="btn btn-success gumb">
-                <MdPersonAddAlt1 
+            <FaAddressCard 
                 size='30'
-                />  Dodaj novog ranika
+            />
+                 Dodaj novog ranika
             </Link>
             <Table striped bordered hover responsive className="table">
                 <thead>
@@ -49,8 +51,9 @@ export default function Radnici (){
                             <td className="sredina">{radnik.oiB}</td>
                             <td className="sredina">{radnik.datumZaposlenja}</td>
                             <td className="sredina" >{radnik.iban}</td>
-                            <td>AKCIJA</td>
+                            <td>
 
+                            </td>
                         </tr>
                     ))}
                 </tbody>
