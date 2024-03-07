@@ -1,0 +1,27 @@
+.desno{
+    text-align: right;
+}
+.sredina{
+    text-align: center;
+}
+
+
+.akcije{
+    margin-top: 1.5rem;
+}
+
+
+.table td,
+.table th {
+  white-space: nowrap;
+}
+.gumb{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.btn-success{
+    background-color: rgb(230, 159, 112);
+    color: blue;
+   
+} 

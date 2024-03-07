@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
-
+import { Link } from "react-router-dom";
+import { MdPersonAddAlt1 } from "react-icons/md";
+import { RoutesNames } from "../../constants";
 
 export default function Radnici (){
 
@@ -23,25 +25,30 @@ export default function Radnici (){
 
     return (
         <Container>
-            <Table striped bordered hover responsive>
+            <Link to={RoutesNames.RADNICI_DODAJ} className="btn btn-success gumb">
+                <MdPersonAddAlt1 
+                size='30'
+                />  Dodaj novog ranika
+            </Link>
+            <Table striped bordered hover responsive className="table">
                 <thead>
                     <tr>
                         <th>Ime</th>
                         <th>Prezime</th>
-                        <th>OiB</th>
-                        <th>Datumzaposlenja</th>
-                        <th>IBAN</th>
-                        <th>Akcija</th>
+                        <th className="sredina">OiB</th>
+                        <th className="sredina">Datumzaposlenja</th>
+                        <th className="sredina">IBAN</th>
+                        <th className="sredina">Akcija</th>
                     </tr>
                 </thead>
                 <tbody>
                     {radnici && radnici.map((radnik,index)=>(
                         <tr key={index}>
-                            <td>{radnik.ime}</td>
-                            <td>{radnik.prezime}</td>
-                            <td>{radnik.oiB}</td>
-                            <td>{radnik.datumZaposlenja}</td>
-                            <td>{radnik.iban}</td>
+                            <td className="lijevo">{radnik.ime}</td>
+                            <td className="lijevo">{radnik.prezime}</td>
+                            <td className="sredina">{radnik.oiB}</td>
+                            <td className="sredina">{radnik.datumZaposlenja}</td>
+                            <td className="sredina" >{radnik.iban}</td>
                             <td>AKCIJA</td>
 
                         </tr>
