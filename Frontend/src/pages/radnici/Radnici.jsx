@@ -3,6 +3,9 @@ import { Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
 import { Link } from "react-router-dom";
 import { FaAddressCard } from "react-icons/fa";
+//import { FaEdit } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { FaUserMinus } from "react-icons/fa6";
 
 import { RoutesNames } from "../../constants";
 
@@ -40,7 +43,7 @@ export default function Radnici (){
                         <th className="sredina">OiB</th>
                         <th className="sredina">Datumzaposlenja</th>
                         <th className="sredina">IBAN</th>
-                        <th className="sredina">Akcija</th>
+                        <th className="sredina"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +54,14 @@ export default function Radnici (){
                             <td className="sredina">{radnik.oiB}</td>
                             <td className="sredina">{radnik.datumZaposlenja}</td>
                             <td className="sredina" >{radnik.iban}</td>
-                            <td>
+                            <td className="sredina">
+                                <Link>
+                                    <FaUserEdit size={25}/>
+                                </Link>
+                                &nbsp;&nbsp;&nbsp;
+                                <Link>
+                                    <FaUserMinus size={25}/>
+                                </Link>
 
                             </td>
                         </tr>
