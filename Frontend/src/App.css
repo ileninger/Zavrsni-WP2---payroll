@@ -18,14 +18,11 @@
 .gumb{
     width: 100%;
     margin-bottom: 5px;
-    
-}
-
-.btn-success:hover{
     background-color: rgb(230, 159, 112);
     color: blue;
-    
-} 
+}
+
+   
 .gumb:hover{
     background-color: rgb(230, 159, 112);
     color: blue;

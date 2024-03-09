@@ -29,7 +29,7 @@ export default function Radnici (){
 
     return (
         <Container>
-            <Link to={RoutesNames.RADNICI_DODAJ} className="btn btn-success gumb">
+            <Link to={RoutesNames.RADNICI_DODAJ} className="btn gumb">
             <FaAddressCard 
                 size='30'
             />
