@@ -32,6 +32,9 @@
     color: blue;
 }
 
+.akcije{
+    margin: top 1.5re;;
+}
    
 .gumb:hover{
     background-color: rgb(230, 159, 112);
