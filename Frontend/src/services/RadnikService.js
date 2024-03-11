@@ -14,6 +14,19 @@ async function getRadnici (){
 
 }
 
+async function obrisiRadnika (sifra){
+
+    return await httpService.delete('/Radnik/'+sifra)
+    .then((res)=>{
+        return {ok:true, poruka:res};
+    }).catch((e)=>{
+        console.log(e);
+    });
+
+}
+
+
 export default{
-    getRadnici
+    getRadnici,
+    obrisiRadnika
 };

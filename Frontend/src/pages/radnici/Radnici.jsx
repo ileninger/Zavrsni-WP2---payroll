@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
 import { Link } from "react-router-dom";
-import { FaAddressCard } from "react-icons/fa";
+import { FaAddressCard, FaSearch } from "react-icons/fa";
 //import { FaEdit } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { FaUserMinus } from "react-icons/fa6";
@@ -23,18 +23,30 @@ export default function Radnici (){
         });
     } 
 
+    async function obrisiRadnika(sifra){
+        const odgovor = await RadnikService.obrisiRadnika(sifra);
+        if (odgovor.ok){
+            alert(odgovor.poruka.data.poruka)
+            dohvatiRadnike();
+        }
+
+    }
+
     useEffect(()=>{
         dohvatiRadnike();
     },[]);
 
     return (
         <Container>
-            <Link to={RoutesNames.RADNICI_DODAJ} className="btn gumb">
-            <FaAddressCard 
-                size='30'
-            />
-                 Dodaj novog ranika
-            </Link>
+
+                    <Link to={RoutesNames.RADNICI_DODAJ} className="btn gumb">
+                    <FaAddressCard 
+                        size='30'
+                        className="lijevo"
+                    />
+                        Dodaj novog ranika
+                    </Link>
+        
             <Table striped bordered hover responsive className="table">
                 <thead>
                     <tr>
@@ -56,12 +68,19 @@ export default function Radnici (){
                             <td className="sredina" >{radnik.iban}</td>
                             <td className="sredina">
                                 <Link>
-                                    <FaUserEdit size={25}/>
+                                    <FaUserEdit size={25} />
                                 </Link>
                                 &nbsp;&nbsp;&nbsp;
-                                <Link>
-                                    <FaUserMinus size={25}/>
-                                </Link>
+                                <Button
+                                    variant="normal"
+                                    onClick={()=>obrisiRadnika(radnik.sifra)}
+                                >
+       
+                                    <FaUserMinus 
+                                    size={25}
+                                    color="red" 
+                                    />
+                                </Button>
 
                             </td>
                         </tr>
