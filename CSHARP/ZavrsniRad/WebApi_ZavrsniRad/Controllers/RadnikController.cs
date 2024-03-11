@@ -78,6 +78,7 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
+   
                 _context.Radnici.Add(radnik);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, radnik);

@@ -11,7 +11,7 @@ namespace WebApi_ZavrsniRad.Models
         /// Ovo svojstvo mi sluzi kao primarni ključ s generiranjem vrijednosti (1,1)
         /// </summary>
         [Key]
-        public int? Sifra { get; set; }
+        public int Sifra { get; set; }
 
     }
 }
