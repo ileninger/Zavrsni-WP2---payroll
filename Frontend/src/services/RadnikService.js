@@ -23,10 +23,24 @@ async function obrisiRadnika (sifra){
         console.log(e);
     });
 
-}
 
+
+}
+async function dodajRadnika(radnik){
+    const odgovor = await httpService.post('Radnik,', radnik)
+    .than(()=>{
+        return {ok:true,poruka:'Uspješno dodano'}
+    })
+    .catch((e)=>{
+        console.log(e.reponse.data.console.errors);
+        return{ok:false,poruka:'Greška'}
+
+    });
+    return odgovor;
+}
 
 export default{
     getRadnici,
-    obrisiRadnika
+    obrisiRadnika,
+    dodajRadnika
 };
