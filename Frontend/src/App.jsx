@@ -7,6 +7,7 @@ import Radnici from "./pages/radnici/Radnici"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import RadniciDodaj from "./pages/radnici/RadniciDodaj"
+import RadniciPromjeni from "./pages/radnici/RadniciPromjeni"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path={RoutesNames.HOME} element ={<Pocetna/>} />
         <Route path={RoutesNames.RADNICI_PREGLED} element ={<Radnici/>} />
         <Route path={RoutesNames.RADNICI_DODAJ} element ={<RadniciDodaj/>} />
+        <Route path={RoutesNames.RADNICI_PROMJENI} element ={<RadniciPromjeni/>} />
       </Routes>
     </>
   )

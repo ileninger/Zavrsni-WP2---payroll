@@ -26,21 +26,49 @@ async function obrisiRadnika (sifra){
 
 
 }
-async function dodajRadnika(radnik){
-    const odgovor = await httpService.post('Radnik,', radnik)
-    .than(()=>{
-        return {ok:true,poruka:'Uspješno dodano'}
+async function dodaj(radnik){
+    const odgovor = await httpService.post('/Radnik',radnik)
+    .then(()=>{
+        return {ok: true, poruka: 'Uspješno dodano'}
     })
     .catch((e)=>{
-        console.log(e.reponse.data.console.errors);
-        return{ok:false,poruka:'Greška'}
-
+        console.log(e.response.data.errors);
+        return {ok: false, poruka: 'Greška'}
     });
     return odgovor;
 }
 
+async function promjeniRadnika(sifra,radnik){
+    const odgovor = await httpService.put('/Radnik/'+sifra,radnik)
+    .then(()=>{
+        return {ok: true, poruka: 'Uspješno promjnjeno'}
+    })
+    .catch((e)=>{
+        console.log(e.response.data.errors);
+        return {ok: false, poruka: 'Greška'}
+    });
+    return odgovor;
+}
+
+async function getBySifra(sifra){
+    return await httpService.get('/Radnik/' + sifra)
+    .then((res)=>{
+        if(App.DEV) console.table(res.data);
+
+        return res;
+    }).catch((e)=>{
+        console.log(e);
+        return {poruka: e}
+    });
+}
+
+
+
+
 export default{
     getRadnici,
     obrisiRadnika,
-    dodajRadnika
+    dodaj,
+    promjeniRadnika, 
+    getBySifra,
 };

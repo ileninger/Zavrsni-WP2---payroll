@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { FaAddressCard, FaSearch } from "react-icons/fa";
 //import { FaEdit } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
@@ -67,10 +67,12 @@ export default function Radnici (){
                             <td className="sredina">{radnik.datumZaposlenja}</td>
                             <td className="sredina" >{radnik.iban}</td>
                             <td className="sredina">
-                                <Link>
+                                <Button
+                                    
+                                    onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}>
                                     <FaUserEdit size={25} />
-                                </Link>
-                                &nbsp;&nbsp;&nbsp;
+                                </Button>
+                                     &nbsp;&nbsp;&nbsp;
                                 <Button
                                     variant="normal"
                                     onClick={()=>obrisiRadnika(radnik.sifra)}
