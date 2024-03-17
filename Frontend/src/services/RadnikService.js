@@ -39,9 +39,9 @@ async function dodaj(radnik){
 }
 
 async function promjeni(sifra,radnik){
-    const odgovor = await httpService.put('/Radnik'+sifra,radnik)
+    const odgovor = await httpService.put('/Radnik/'+sifra,radnik)
     .then(()=>{
-        return {ok: true, poruka: 'Uspješno promjenjeno'}
+        return {ok: true, poruka: 'Uspješno promjnjeno'}
     })
     .catch((e)=>{
         console.log(e.response.data.errors);
@@ -49,8 +49,6 @@ async function promjeni(sifra,radnik){
     });
     return odgovor;
 }
-
-
 
 async function getBySifra(sifra){
     return await httpService.get('/Radnik/' + sifra)

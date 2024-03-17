@@ -69,10 +69,12 @@ export default function Radnici (){
                             <td className="sredina" >{radnik.iban}</td>
                             <td className="sredina">
                                 <Button
-                                    
-                                    variant='primary'
+                                    variant="normal"
                                     onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}>
-                                    <FaUserEdit size={25} />
+                                    <FaUserEdit 
+                                     color="blue"
+                                    
+                                    size={25} />
                                 </Button>
                                      &nbsp;&nbsp;&nbsp;
                                 <Button
@@ -85,15 +87,11 @@ export default function Radnici (){
                                     color="red" 
                                     />
                                 </Button>
-
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </Table>
         </Container>
-
-
-
     );
 }

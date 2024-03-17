@@ -1,16 +1,34 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RiArrowGoBackFill } from "react-icons/ri"
 import { RiArrowGoForwardFill } from "react-icons/ri";
 import { RoutesNames } from "../../constants";
 import RadnikService from "../../services/RadnikService";
+import { useEffect, useState } from "react";
 
 
 export default function RadniciPomjeni (){
     const navigate = useNavigate();
+    const routeParams = useParams();
+    const [radnik,setRadnici] = useState({});
 
-    async function dodajRadnika(radnik){
-        const odgovor = await RadnikService.dodaj(radnik);
+    async function dohvatiRadnike(){
+        await RadnikService.getBySifra(routeParams.sifra)
+        .then((res)=>{
+            setRadnici(res.data)
+        })
+        .catch((e)=>{
+            alert(e.poruka);
+        });
+    }
+
+    useEffect(()=>{
+        //console.log("useEffect")
+        dohvatiRadnike();
+    },[]);
+
+    async function promjeniRadnika(radnik){
+        const odgovor = await RadnikService.promjeni(routeParams.sifra,radnik);
         if(odgovor.ok){
           navigate(RoutesNames.RADNICI_PREGLED);
         }else{
@@ -18,10 +36,10 @@ export default function RadniciPomjeni (){
           alert(odgovor.poruka);
         }
     }
+
     function handleSubmit(e){
         e.preventDefault();
         const podaci = new FormData(e.target);
-        //console.log(podaci.get('naziv'));
 
         const radnik = 
         {
@@ -33,34 +51,10 @@ export default function RadniciPomjeni (){
           };
 
           //console.log(JSON.stringify(smjer));
-          dodajRadnika(radnik);
-
+          promjeniRadnika(radnik);
     }
 
-
-
-    // function handleSubmit(e)
-    // {
-    //     e.preventDefault();
-    //     const podaci = new FormData(e.target);
-    //     console.log(podaci.get('ime'));
-
-    //     const radnik = 
-    //     {
-    //         ime: podaci.get('ime'),
-    //         prezime: podaci.get('prezime'),
-    //         oiB: podaci.get('oib'),
-    //         datumZaposlenja: podaci.get('datumzaposlenja'),
-    //         iban: podaci.get('iban'),
-    //     };
-
-    //     console.log(JSON.stringify(radnik));
-
-    // }
-
     
-
-
 
     
     return (
@@ -70,30 +64,35 @@ export default function RadniciPomjeni (){
                     <Form.Label>Ime</Form.Label>
                     <Form.Control 
                         type="text"
+                        defaultValue={radnik.ime}
                         name="ime"/>
                 </Form.Group>
                 <Form.Group controlId="prezime">
                     <Form.Label>Prezime</Form.Label>
                     <Form.Control 
                         type="text"
+                        defaultValue={radnik.prezime}
                         name="prezime"/>
                 </Form.Group>
                 <Form.Group controlId="oib">
                     <Form.Label>OiB</Form.Label>
                     <Form.Control 
                         type="text"
+                        defaultValue={radnik.oiB}
                         name="oib"/>
                 </Form.Group>
                 <Form.Group controlId="datumzaposlenja">
                     <Form.Label>DatumZaposlenja</Form.Label>
                     <Form.Control 
                         type="text"
+                        defaultValue={radnik.datumZaposlenja}
                         name="datumzaposlenja"/>
                 </Form.Group>
                 <Form.Group controlId="iban">
                     <Form.Label>Iban</Form.Label>
                     <Form.Control 
                         type="text"
+                        defaultValue={radnik.iban}
                         name="iban"/>
                 </Form.Group>
             <Row className="akcije">
@@ -110,7 +109,7 @@ export default function RadniciPomjeni (){
                         variant="primary"
                         type="submit">
                         <RiArrowGoForwardFill size ={15} />
-                    Dodaj smjer
+                    Promjeni radnika 
                     </Button>
                 </Col>
             </Row>
