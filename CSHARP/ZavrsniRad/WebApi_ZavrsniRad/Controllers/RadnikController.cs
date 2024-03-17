@@ -169,6 +169,8 @@ namespace WebApi_ZavrsniRad.Controllers
                 RadnikIzBaze.OiB = radnik.OiB;
                 RadnikIzBaze.DatumZaposlenja = radnik.DatumZaposlenja;
                 RadnikIzBaze.Iban = radnik.Iban;
+                RadnikIzBaze.CijenaRadnogSata = radnik.CijenaRadnogSata;
+                RadnikIzBaze.KoeficijentRadnogMjesta = radnik.KoeficijentRadnogMjesta;
 
                 _context.Radnici.Update(RadnikIzBaze);
                 _context.SaveChanges();

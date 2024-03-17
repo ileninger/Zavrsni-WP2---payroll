@@ -31,6 +31,8 @@ create table Radnici (
 	OiB char (11) not null,
 	DatumZaposlenja date,
 	IBAN varchar (50) not null,
+	CijenaRadnogSata decimal (18,2) not null,
+	KoeficijentRadnogMjesta decimal (18,2) not null,
 );
 
 create table Obracun(
@@ -38,8 +40,6 @@ create table Obracun(
 	Radnik int not null,
 	DatumObracuna date not null,
 	BrojRadnihSati int not null,
-	CijenaRadnogSata decimal (18,2) not null,
-	KoeficijentRadnogMjesta decimal (18,2) not null,
 	OsnovniOsobniOdbitak decimal (18,2) not null,
 	UdioZaPrviMirovinskiStup decimal (18,2) not null,
 	UdioZaDrugiMirovinskiStup decimal (18,2) not null,
