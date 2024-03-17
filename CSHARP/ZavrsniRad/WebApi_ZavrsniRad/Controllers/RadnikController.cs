@@ -67,12 +67,12 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var smjer = _context.Radnici.Find(sifra);
-                if (smjer == null)
+                var radnik = _context.Radnici.Find(sifra);
+                if (radnik == null)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(smjer);
+                return new JsonResult(radnik);
             }
             catch (Exception ex)
             {
