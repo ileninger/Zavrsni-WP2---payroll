@@ -1,33 +1,16 @@
-import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { RiArrowGoBackFill } from "react-icons/ri"
+import { RiArrowGoForwardFill } from "react-icons/ri";
 import { RoutesNames } from "../../constants";
 import RadnikService from "../../services/RadnikService";
 
 
-export default function RadniciPromjeni (){
-
+export default function RadniciPomjeni (){
     const navigate = useNavigate();
-    const routeParams = useParams();
-    const [smjer,setSmjer] = useState({});
 
-    async function dohvatiRadnika(){
-        await SmjerService.getBySifra(routeParams.sifra)
-        .then((res)=>{
-            setSmjer(res.data)
-        })
-        .catch((e)=>{
-            alert(e.poruka);
-        });
-    }
-
-    useEffect(()=>{
-        //console.log("useEffect")
-        dohvatiRadnika();
-    },[]);
-
-    async function promjeniRadnika(radnik){
-        const odgovor = await RadnikService.promjeniRadnika(routeParams.sifra,radnik);
+    async function dodajRadnika(radnik){
+        const odgovor = await RadnikService.dodaj(radnik);
         if(odgovor.ok){
           navigate(RoutesNames.RADNICI_PREGLED);
         }else{
@@ -50,9 +33,34 @@ export default function RadniciPromjeni (){
           };
 
           //console.log(JSON.stringify(smjer));
-          promjeniRadnika(radnik);
+          dodajRadnika(radnik);
 
     }
+
+
+
+    // function handleSubmit(e)
+    // {
+    //     e.preventDefault();
+    //     const podaci = new FormData(e.target);
+    //     console.log(podaci.get('ime'));
+
+    //     const radnik = 
+    //     {
+    //         ime: podaci.get('ime'),
+    //         prezime: podaci.get('prezime'),
+    //         oiB: podaci.get('oib'),
+    //         datumZaposlenja: podaci.get('datumzaposlenja'),
+    //         iban: podaci.get('iban'),
+    //     };
+
+    //     console.log(JSON.stringify(radnik));
+
+    // }
+
+    
+
+
 
     
     return (

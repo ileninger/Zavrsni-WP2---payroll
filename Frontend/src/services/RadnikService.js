@@ -38,10 +38,10 @@ async function dodaj(radnik){
     return odgovor;
 }
 
-async function promjeniRadnika(sifra,radnik){
-    const odgovor = await httpService.put('/Radnik/'+sifra,radnik)
+async function promjeni(sifra,radnik){
+    const odgovor = await httpService.put('/Radnik'+sifra,radnik)
     .then(()=>{
-        return {ok: true, poruka: 'Uspješno promjnjeno'}
+        return {ok: true, poruka: 'Uspješno promjenjeno'}
     })
     .catch((e)=>{
         console.log(e.response.data.errors);
@@ -49,6 +49,8 @@ async function promjeniRadnika(sifra,radnik){
     });
     return odgovor;
 }
+
+
 
 async function getBySifra(sifra){
     return await httpService.get('/Radnik/' + sifra)
@@ -69,6 +71,6 @@ export default{
     getRadnici,
     obrisiRadnika,
     dodaj,
-    promjeniRadnika, 
+    promjeni, 
     getBySifra,
 };

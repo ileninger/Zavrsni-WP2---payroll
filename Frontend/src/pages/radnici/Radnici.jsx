@@ -12,6 +12,7 @@ import { RoutesNames } from "../../constants";
 export default function Radnici (){
 
     const [radnici,setRadnici] = useState ();
+    const navigate = useNavigate();
 
     async function dohvatiRadnike (){
         await RadnikService.getRadnici()
@@ -69,6 +70,7 @@ export default function Radnici (){
                             <td className="sredina">
                                 <Button
                                     
+                                    variant='primary'
                                     onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}>
                                     <FaUserEdit size={25} />
                                 </Button>
