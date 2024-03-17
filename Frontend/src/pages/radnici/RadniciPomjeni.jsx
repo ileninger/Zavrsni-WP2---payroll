@@ -48,6 +48,8 @@ export default function RadniciPomjeni (){
             oiB: podaci.get('oib'),
             datumZaposlenja: podaci.get('datumzaposlenja'),
             iban: podaci.get('iban'),
+            cijenaRadnogSata:parseFloat(podaci.get('cijenaRadnogSata')),
+            koeficijentRadnogMjesta:parseFloat(podaci.get('koeficijentRadnogMjesta')),
           };
 
           //console.log(JSON.stringify(smjer));
@@ -94,6 +96,25 @@ export default function RadniciPomjeni (){
                         type="text"
                         defaultValue={radnik.iban}
                         name="iban"/>
+                </Form.Group>
+                <Form.Group controlId="cijenaRadnogSata">
+                    <Form.Label>Cijena radnog sata</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        defaultValue={radnik.cijenaRadnogSata}
+                        name="cijenaRadnogSata"
+                        placeholder='Cijena radnog sata'
+                    />
+                </Form.Group>
+                <Form.Group controlId="koeficijentRadnogMjesta">
+                    <Form.Label>Koeficijent radnog mjesta </Form.Label>
+                    <Form.Control 
+                        type="text"
+                        defaultValue={radnik.koeficijentRadnogMjesta}
+                        name="koeficijentRadnogMjesta"
+                        placeholder='Koeficijent radnog mjesta'
+                        
+                    />
                 </Form.Group>
             <Row className="akcije">
                 <Col>

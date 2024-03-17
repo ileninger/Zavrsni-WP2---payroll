@@ -30,6 +30,8 @@ export default function RadniciDodaj (){
             oiB: podaci.get('oib'),
             datumZaposlenja: podaci.get('datumzaposlenja'),
             iban: podaci.get('iban'),
+            cijenaRadnogSata:parseFloat(podaci.get('cijenaRadnogSata')),
+            koeficijentRadnogMjesta:parseFloat(podaci.get('koeficijentRadnogMjesta')),
           };
 
           //console.log(JSON.stringify(smjer));
@@ -69,32 +71,64 @@ export default function RadniciDodaj (){
                 <Form.Group controlId="ime">
                     <Form.Label>Ime</Form.Label>
                     <Form.Control 
-                        type="text"
-                        name="ime"/>
+                        type='text'
+                        name='ime'
+                        placeholder='Ime radnika'
+                        maxLength={255}
+                        required
+                        />
                 </Form.Group>
                 <Form.Group controlId="prezime">
                     <Form.Label>Prezime</Form.Label>
                     <Form.Control 
                         type="text"
-                        name="prezime"/>
+                        name="prezime"
+                        placeholder='Prezime radnika'
+                        maxLength={255}
+                        />
                 </Form.Group>
                 <Form.Group controlId="oib">
                     <Form.Label>OiB</Form.Label>
                     <Form.Control 
                         type="text"
-                        name="oib"/>
+                        name="oib"
+                        placeholder='OiB radnika'
+                        maxLength={11}
+                        />
                 </Form.Group>
                 <Form.Group controlId="datumzaposlenja">
                     <Form.Label>DatumZaposlenja</Form.Label>
                     <Form.Control 
                         type="text"
-                        name="datumzaposlenja"/>
+                        name="datumzaposlenja"
+                        placeholder='Datum zaposlenja radnika'
+                        maxLength={255}   
+                        />
                 </Form.Group>
                 <Form.Group controlId="iban">
                     <Form.Label>Iban</Form.Label>
                     <Form.Control 
                         type="text"
-                        name="iban"/>
+                        name="iban"
+                        placeholder='IBAN radnika'
+                        maxLength={255}
+                        />
+                </Form.Group>
+                <Form.Group controlId="cijenaRadnogSata">
+                    <Form.Label>Cijena radnog sata</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        name="cijenaRadnogSata"
+                        placeholder='Cijena radnog sata'
+                    />
+                </Form.Group>
+                <Form.Group controlId="koeficijentRadnogMjesta">
+                    <Form.Label>Koeficijent radnog mjesta </Form.Label>
+                    <Form.Control 
+                        type="text"
+                        name="koeficijentRadnogMjesta"
+                        placeholder='Koeficijent radnog mjesta'
+                    />
                 </Form.Group>
             <Row className="akcije">
                 <Col>
@@ -110,7 +144,7 @@ export default function RadniciDodaj (){
                         variant="primary"
                         type="submit">
                         <RiArrowGoForwardFill size ={15} />
-                    Dodaj smjer
+                    Dodaj radnika
                     </Button>
                 </Col>
             </Row>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import RadnikService from "../../services/RadnikService";
+import { NumericFormat } from "react-number-format";
 import { Link,useNavigate } from "react-router-dom";
 import { FaAddressCard, FaSearch } from "react-icons/fa";
 //import { FaEdit } from "react-icons/fa";
@@ -56,7 +57,9 @@ export default function Radnici (){
                         <th className="sredina">OiB</th>
                         <th className="sredina">Datumzaposlenja</th>
                         <th className="sredina">IBAN</th>
-                        <th className="sredina"></th>
+                        <th className="sredina">Cijena radnog sata</th>
+                        <th className="sredina">Koeficijent radnog mjesta</th>
+                        <th className="sredina">Akcija</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +69,33 @@ export default function Radnici (){
                             <td className="lijevo">{radnik.prezime}</td>
                             <td className="sredina">{radnik.oiB}</td>
                             <td className="sredina">{radnik.datumZaposlenja}</td>
-                            <td className="sredina" >{radnik.iban}</td>
+                            <td className="sredina">{radnik.iban}</td>
+                            
+                            <td className={radnik.cijenaRadnogSata==null ? 'sredina' : 'desno'}>
+                                {radnik.cijenaRadnogSata==null 
+                                ? 'Nije definirano'
+                                :
+                                    <NumericFormat 
+                                    value={radnik.cijenaRadnogSata}
+                                    displayType={'text'}
+                                    thousandSeparator='.'
+                                    decimalSeparator=','
+                                    prefix={'€'}
+                                    decimalScale={2}
+                                    fixedDecimalScale
+                                    />
+                                } 
+                            </td>                                     
+                            <td className="sredina" >
+                            <NumericFormat 
+                                    value={radnik.koeficijentRadnogMjesta}
+                                    displayType={'text'}
+                                    thousandSeparator='.'
+                                    decimalSeparator=','
+                                    decimalScale={2}
+                                    fixedDecimalScale
+                                    />
+                            </td>
                             <td className="sredina">
                                 <Button
                                     variant="normal"
