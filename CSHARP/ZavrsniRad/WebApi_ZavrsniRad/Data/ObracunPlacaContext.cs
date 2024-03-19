@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using WebApi_ZavrsniRad.Models;
 
 namespace WebApi_ZavrsniRad.Data
@@ -23,7 +24,17 @@ namespace WebApi_ZavrsniRad.Data
         /// </summary>
 
         public DbSet<Radnik> Radnici { get; set; }
-        //public DbSet<Obracun> Obracuni { get; set; }
+
+        public DbSet<Obracun> Obracun { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            // implementacija veze 1:n
+            modelBuilder.Entity<Obracun>().HasOne(g => g.Radnik);
+
+
+        }
+
 
     }
 }

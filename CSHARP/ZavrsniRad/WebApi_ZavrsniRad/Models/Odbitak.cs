@@ -12,12 +12,12 @@
         /// <summary>
         /// Postotak koji se odvaja za prvi mirovinski stup
         /// </summary>
-        public decimal? UdioZaPrviMirovnisnkiStup { get; set; }
+        public decimal? UdioZaPrviMirovinskiStup { get; set; }
 
         /// <summary>
         /// Postotak koji se odvaja za drugi mirovinski stup
         /// </summary>
-        public decimal? UdioZaDrugiMirovnisnkiStup { get; set; }
+        public decimal? UdioZaDrugiMirovinskiStup { get; set; }
 
         /// <summary>
         /// Postotak poreza na dohodak
