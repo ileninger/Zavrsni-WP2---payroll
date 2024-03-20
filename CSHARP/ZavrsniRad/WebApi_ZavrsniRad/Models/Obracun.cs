@@ -14,8 +14,8 @@ namespace WebApi_ZavrsniRad.Models
         /// <summary>
         /// Prezime radnika u bazi
         /// </summary>
-        [Required(ErrorMessage = "Broj radnih sati koje je radnik odradio u razdoblju obračuna je obavezan")]
-        public decimal? BrojRadnihSati { get; set; }
+        //[Required(ErrorMessage = "Broj radnih sati koje je radnik odradio u razdoblju obračuna je obavezan")]
+        public int? BrojRadnihSati { get; set; }
         //Bruto I = CijenaRadnogSata*BrojRadnihSati*KoeficijentRadnnogMjesta
         public decimal? Bruto_I { get; set; }
 

@@ -34,7 +34,7 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var lista = _context.Obracun.ToList();
+                var lista = _context.Obracuni.ToList();
                 if (lista == null || lista.Count == 0)
                 {
                     return new EmptyResult();
@@ -58,7 +58,7 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                _context.Obracun.Add(entitet);
+                _context.Obracuni.Add(entitet);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, entitet);
             }
@@ -84,7 +84,7 @@ namespace WebApi_ZavrsniRad.Controllers
             {
 
 
-                var entitetIzBaze = _context.Obracun.Find(sifra);
+                var entitetIzBaze = _context.Obracuni.Find(sifra);
                 var PodaciORadniku = _context.Radnici.Find(sifra);
 
 
@@ -105,14 +105,14 @@ namespace WebApi_ZavrsniRad.Controllers
                 entitetIzBaze.OsnovniOsobniOdbitak = entitet.OsnovniOsobniOdbitak;
                 entitetIzBaze.PorezNaDohodak = entitet.PorezNaDohodak;
 
-                entitetIzBaze.Bruto_I = entitetIzBaze.Bruto_I;
-                entitetIzBaze.Bruto_II = entitetIzBaze.Bruto_II;
-                entitetIzBaze.PoreznaOsnovica = entitetIzBaze.PoreznaOsnovica;
-                entitetIzBaze.NetoIznosZaIsplatu = entitetIzBaze.NetoIznosZaIsplatu;
+                entitetIzBaze.Bruto_I = entitet.Bruto_I;
+                entitetIzBaze.Bruto_II = entitet.Bruto_II;
+                entitetIzBaze.PoreznaOsnovica = entitet.PoreznaOsnovica;
+                entitetIzBaze.NetoIznosZaIsplatu = entitet.NetoIznosZaIsplatu;
 
 
 
-                _context.Obracun.Update(entitetIzBaze);
+                _context.Obracuni.Update(entitetIzBaze);
                 _context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, entitetIzBaze);
@@ -138,14 +138,14 @@ namespace WebApi_ZavrsniRad.Controllers
 
             try
             {
-                var entitetIzbaze = _context.Obracun.Find(sifra);
+                var entitetIzbaze = _context.Obracuni.Find(sifra);
 
                 if (entitetIzbaze == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, sifra);
                 }
 
-                _context.Obracun.Remove(entitetIzbaze);
+                _context.Obracuni.Remove(entitetIzbaze);
                 _context.SaveChanges();
 
                 return new JsonResult(new { poruka = "Obrisano" }); // ovo nije baš najbolja praksa ali da znake kako i to može

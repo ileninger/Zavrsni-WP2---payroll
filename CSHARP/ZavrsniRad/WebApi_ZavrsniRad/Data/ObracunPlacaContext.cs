@@ -25,7 +25,7 @@ namespace WebApi_ZavrsniRad.Data
 
         public DbSet<Radnik> Radnici { get; set; }
 
-        public DbSet<Obracun> Obracun { get; set; }
+        public DbSet<Obracun> Obracuni { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

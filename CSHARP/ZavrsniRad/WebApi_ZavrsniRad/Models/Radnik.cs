@@ -38,13 +38,13 @@ namespace WebApi_ZavrsniRad.Models
         /// <summary>
         /// Prezime radnika u bazi
         /// </summary>
-        [Required(ErrorMessage = "Jedinična cijena radnog sata ja obavezna")]
+        //[Required(ErrorMessage = "Jedinična cijena radnog sata ja obavezna")]
         public decimal? CijenaRadnogSata { get; set; }
 
         /// <summary>
         /// Prezime radnika u bazi
         /// </summary>
-        [Required(ErrorMessage = "Koeficijent radnog mjesta je obavezan")]
+        //[Required(ErrorMessage = "Koeficijent radnog mjesta je obavezan")]
         public decimal? KoeficijentRadnogMjesta { get; set; }
     }
 }
