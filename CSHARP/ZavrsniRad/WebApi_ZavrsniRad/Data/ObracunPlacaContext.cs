@@ -26,11 +26,14 @@ namespace WebApi_ZavrsniRad.Data
         public DbSet<Radnik> Radnici { get; set; }
 
         public DbSet<Obracun> Obracuni { get; set; }
+
+        public DbSet<Placa> Place { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             // implementacija veze 1:n
             modelBuilder.Entity<Obracun>().HasOne(g => g.Radnik);
+            modelBuilder.Entity<Placa>().HasOne(g => g.Obracun);
 
 
         }

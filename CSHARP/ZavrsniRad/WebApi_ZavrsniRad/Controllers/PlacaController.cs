@@ -10,7 +10,7 @@ namespace WebApi_ZavrsniRad.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ObracunController : ControllerBase
+    public class PlacaController : ControllerBase
     {
         /// <summary>
         /// Kontekst za rad s bazom koji  će biti postavljen s pomoću Dependecy Injection-om
@@ -20,7 +20,7 @@ namespace WebApi_ZavrsniRad.Controllers
         /// Konstruktor klase koja prima Radnik kontext pomoću DI principa
         /// </summary>
         /// <param name="context"></param>
-        public ObracunController(ObracunPlacaContext context)
+        public PlacaController(ObracunPlacaContext context)
         {
             _context = context;
         }
@@ -34,7 +34,7 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var lista = _context.Obracuni.ToList();
+                var lista = _context.Place.ToList();
                 if (lista == null || lista.Count == 0)
                 {
                     return new EmptyResult();
@@ -48,33 +48,9 @@ namespace WebApi_ZavrsniRad.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{sifra:int}")]
-        public IActionResult GetBySifra(int sifra)
-        {
-            // kontrola ukoliko upit nije valjan
-            if (!ModelState.IsValid || sifra <= 0)
-            {
-                return BadRequest(ModelState);
-            }
-            try
-            {
-                var obracun = _context.Obracuni.Find(sifra);
-                if (obracun == null)
-                {
-                    return new EmptyResult();
-                }
-                return new JsonResult(obracun);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                    ex.Message);
-            }
-        }
 
         [HttpPost]
-        public IActionResult Post(Obracun entitet)
+        public IActionResult Post(Placa entitet)
         {
             if (!ModelState.IsValid || entitet == null)
             {
@@ -82,7 +58,7 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                _context.Obracuni.Add(entitet);
+                _context.Place.Add(entitet);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, entitet);
             }
@@ -96,7 +72,7 @@ namespace WebApi_ZavrsniRad.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, Obracun entitet)
+        public IActionResult Put(int sifra, Placa entitet)
         {
             if (sifra <= 0 || !ModelState.IsValid || entitet == null)
             {
@@ -108,8 +84,8 @@ namespace WebApi_ZavrsniRad.Controllers
             {
 
 
-                var entitetIzBaze = _context.Obracuni.Find(sifra);
-                var PodaciORadniku = _context.Radnici.Find(sifra);
+                var entitetIzBaze = _context.Place.Find(sifra);
+
 
 
                 if (entitetIzBaze == null)
@@ -121,22 +97,9 @@ namespace WebApi_ZavrsniRad.Controllers
                 // inače ovo rade mapperi
                 // za sada ručno
 
-                entitetIzBaze.DatumObracuna = entitet.DatumObracuna;
-                entitetIzBaze.BrojRadnihSati = entitet.BrojRadnihSati;
-                entitetIzBaze.OsnovniOsobniOdbitak = entitet.OsnovniOsobniOdbitak;
-                entitetIzBaze.UdioZaPrviMirovinskiStup = entitet.UdioZaPrviMirovinskiStup;
-                entitetIzBaze.UdioZaDrugiMirovinskiStup = entitet.UdioZaDrugiMirovinskiStup;
-                entitetIzBaze.OsnovniOsobniOdbitak = entitet.OsnovniOsobniOdbitak;
-                entitetIzBaze.PorezNaDohodak = entitet.PorezNaDohodak;
-
-                entitetIzBaze.Bruto_I = entitet.Bruto_I;
-                entitetIzBaze.Bruto_II = entitet.Bruto_II;
-                entitetIzBaze.PoreznaOsnovica = entitet.PoreznaOsnovica;
-                entitetIzBaze.NetoIznosZaIsplatu = entitet.NetoIznosZaIsplatu;
-
-
-
-                _context.Obracuni.Update(entitetIzBaze);
+                entitetIzBaze.NazivPlace = entitet.NazivPlace;
+  
+                _context.Place.Update(entitetIzBaze);
                 _context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, entitetIzBaze);
@@ -162,14 +125,14 @@ namespace WebApi_ZavrsniRad.Controllers
 
             try
             {
-                var entitetIzbaze = _context.Obracuni.Find(sifra);
+                var entitetIzbaze = _context.Place.Find(sifra);
 
                 if (entitetIzbaze == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, sifra);
                 }
 
-                _context.Obracuni.Remove(entitetIzbaze);
+                _context.Place.Remove(entitetIzbaze);
                 _context.SaveChanges();
 
                 return new JsonResult(new { poruka = "Obrisano" }); // ovo nije baš najbolja praksa ali da znake kako i to može
