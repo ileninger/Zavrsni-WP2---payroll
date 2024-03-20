@@ -9,6 +9,8 @@ import { FaUserEdit } from "react-icons/fa";
 import { FaUserMinus } from "react-icons/fa6";
 
 import { RoutesNames } from "../../constants";
+import moment from "moment/moment";
+
 
 export default function Radnici (){
 
@@ -68,10 +70,17 @@ export default function Radnici (){
                             <td className="lijevo">{radnik.ime}</td>
                             <td className="lijevo">{radnik.prezime}</td>
                             <td className="sredina">{radnik.oiB}</td>
-                            <td className="sredina">{radnik.datumZaposlenja}</td>
+                            <td className="sredina">
+                            {
+                                radnik.datumZaposlenja==null?'Nije uneseno':
+                                moment.utc(radnik.datumZaposlenja).format('DD.MM.YYYY.')
+                            }
+                            </td>
                             <td className="sredina">{radnik.iban}</td>
+
+
                             
-                            <td className={radnik.cijenaRadnogSata==null ? 'sredina' : 'desno'}>
+                            <td className={radnik.cijenaRadnogSata==null ? 'sredina' : 'sredina'}>
                                 {radnik.cijenaRadnogSata==null 
                                 ? 'Nije definirano'
                                 :
