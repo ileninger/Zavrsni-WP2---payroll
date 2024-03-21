@@ -24,9 +24,6 @@ GO
 SELECT name, collation_name FROM sys.databases;
 GO
 
-
-use ObracunPlace;
-
 create table  Radnici(
       Sifra int not null primary key identity (1,1),
       Ime varchar (50) not null,
@@ -38,7 +35,7 @@ create table  Radnici(
       KoeficijentRadnogMjesta decimal (18,2) not null,
 
 );
-create table PodaciZaObracun (
+create table PodaciZaObracune (
 	Sifra int not null primary key identity (1,1),
 	Radnik int not null,
 	Obracun int not null,
@@ -53,6 +50,7 @@ create table PodaciZaObracun (
 
  create table Place (
       Sifra int not null primary key identity (1,1),
+	  Obracun int not null,
       NazivPlace varchar (50),
 );
 
@@ -65,12 +63,6 @@ create table Obracuni(
 );
 
 
- create table PlaceRadnik (
-      Sifra int not null primary key identity (1,1),
-      Radnik int not null,
-      Placa int not null
-);
-
 
 create table Administratori (
       Administratori_ID int primary key identity (1,1) not null,
@@ -82,7 +74,5 @@ create table Administratori (
 
 alter table PodaciZaObracun add foreign key (Radnik) references Radnici(Sifra);
 alter table PodaciZaObracun add foreign key (Obracun) references Obracuni(Sifra);
-
-alter table PlaceRadnik add foreign key (Radnik) references Radnici(Sifra);
-alter table PlaceRadnik add foreign key (Placa) references Place(Sifra);
+alter table Place add foreign key (Obracun) references Obracuni(Sifra);
 
