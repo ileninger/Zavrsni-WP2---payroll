@@ -24,44 +24,65 @@ GO
 SELECT name, collation_name FROM sys.databases;
 GO
 
-create table Radnici (
-	Sifra int not null primary key identity (1,1),
-	Ime varchar (50) not null,
-	Prezime varchar (50) not null,
-	OiB char (11) not null,
-	DatumZaposlenja date,
-	IBAN varchar (50) not null,
-	CijenaRadnogSata decimal (18,2) not null,
-	KoeficijentRadnogMjesta decimal (18,2) not null,
-);
 
-create table Obracun(
+use ObracunPlace;
+
+create table  Radnici(
+      Sifra int not null primary key identity (1,1),
+      Ime varchar (50) not null,
+      Prezime varchar (50) not null,
+      OiB char (11) not null,
+      DatumZaposlenja date,
+      IBAN varchar (50) not null,
+      CijenaRadnogSata decimal (18,2) not null,
+      KoeficijentRadnogMjesta decimal (18,2) not null,
+
+);
+create table PodaciZaObracun (
 	Sifra int not null primary key identity (1,1),
 	Radnik int not null,
-	DatumObracuna date not null,
+	Obracun int not null,
 	BrojRadnihSati int not null,
 	OsnovniOsobniOdbitak decimal (18,2) not null,
-	UdioZaPrviMirovinskiStup decimal (18,2) not null,
-	UdioZaDrugiMirovinskiStup decimal (18,2) not null,
-	PorezNaDohodak decimal (18,2) not null,
-	PoreznaOsnovica decimal (18,2) not null,
-	Bruto decimal (18,2),
-	Bruto_I decimal (18,2),
-	Bruto_II decimal (18,2),
-	NetoIznosZaIsplatu decimal (18,2)
+    UdioZaPrviMirovinskiStup decimal (18,2) not null,
+    UdioZaDrugiMirovinskiStup decimal (18,2) not null,
+    PorezNaDohodak decimal (18,2) not null,
+    PoreznaOsnovica decimal (18,2) not null,
 );
 
-create table Place (
-	Sifra int not null primary key identity (1,1),
-	Obracun int not null,
-	NazivPlace varchar (50),
+
+ create table Place (
+      Sifra int not null primary key identity (1,1),
+      NazivPlace varchar (50),
 );
+
+create table Obracuni(
+      Sifra int not null primary key identity (1,1),
+      DatumObracuna date not null,
+      Bruto_I decimal (18,2),
+      Bruto_II decimal (18,2),
+      NetoIznosZaIsplatu decimal (18,2)
+);
+
+
+ create table PlaceRadnik (
+      Sifra int not null primary key identity (1,1),
+      Radnik int not null,
+      Placa int not null
+);
+
 
 create table Administratori (
-	Administratori_ID int primary key identity (1,1) not null,
-	Ime varchar (50) not null,
-	Lozimka varchar (100) not null
+      Administratori_ID int primary key identity (1,1) not null,
+      Ime varchar (50) not null,
+      Lozimka varchar (100) not null
 );
 
-alter table Obracun add foreign key (Radnik) references Radnici (Sifra);
-alter table Place add foreign key (Obracun) references Obracun(Sifra);
+
+
+alter table PodaciZaObracun add foreign key (Radnik) references Radnici(Sifra);
+alter table PodaciZaObracun add foreign key (Obracun) references Obracuni(Sifra);
+
+alter table PlaceRadnik add foreign key (Radnik) references Radnici(Sifra);
+alter table PlaceRadnik add foreign key (Placa) references Place(Sifra);
+
