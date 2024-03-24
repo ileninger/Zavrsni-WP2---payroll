@@ -46,6 +46,8 @@ namespace WebApi_ZavrsniRad.Models
         /// </summary>
         //[Required(ErrorMessage = "Koeficijent radnog mjesta je obavezan")]
         public decimal? KoeficijentRadnogMjesta { get; set; }
+
+
     }
 }
 
