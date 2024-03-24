@@ -95,18 +95,18 @@ namespace WebApi_ZavrsniRad.Controllers
         /// <response code="503">Baza nedostupna iz razno raznih razloga</response> 
         /// <returns>Smjer s šifrom koju je dala baza</returns>
         [HttpPost]
-        public IActionResult Post(Radnik radnik)
+        public IActionResult Post(Radnik entitet)
         {
-            if (!ModelState.IsValid || radnik == null)
+            if (!ModelState.IsValid || entitet == null)
             {
                 return BadRequest();
             }
             try
             {
-   
-                _context.Radnici.Add(radnik);
+
+                _context.Radnici.Add(entitet);
                 _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, radnik);
+                return StatusCode(StatusCodes.Status201Created, entitet);
             }
             catch (Exception ex)
             {
@@ -142,9 +142,9 @@ namespace WebApi_ZavrsniRad.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, Radnik radnik)
+        public IActionResult Put(int sifra, Radnik entitet)
         {
-            if (sifra <= 0 || !ModelState.IsValid || radnik == null)
+            if (sifra <= 0 || !ModelState.IsValid || entitet == null)
             {
                 return BadRequest();
             }
@@ -154,28 +154,30 @@ namespace WebApi_ZavrsniRad.Controllers
             {
 
 
-                var RadnikIzBaze = _context.Radnici.Find(sifra);
+                var entitetIzBaze = _context.Radnici.Find(sifra);
 
-                if (RadnikIzBaze == null)
+
+                if (entitetIzBaze == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, sifra);
                 }
 
 
+
                 // inače ovo rade mapperi
                 // za sada ručno
-                RadnikIzBaze.Ime = radnik.Ime;
-                RadnikIzBaze.Prezime = radnik.Prezime;
-                RadnikIzBaze.OiB = radnik.OiB;
-                RadnikIzBaze.DatumZaposlenja = radnik.DatumZaposlenja;
-                RadnikIzBaze.Iban = radnik.Iban;
-                RadnikIzBaze.CijenaRadnogSata = radnik.CijenaRadnogSata;
-                RadnikIzBaze.KoeficijentRadnogMjesta = radnik.KoeficijentRadnogMjesta;
+                entitetIzBaze.Ime = entitet.Ime;
+                entitetIzBaze.Prezime = entitet.Prezime;
+                entitetIzBaze.OiB = entitet.OiB;
+                entitetIzBaze.DatumZaposlenja = entitet.DatumZaposlenja;
+                entitetIzBaze.Iban = entitet.Iban;
+                entitetIzBaze.CijenaRadnogSata = entitet.CijenaRadnogSata;
+                entitetIzBaze.KoeficijentRadnogMjesta = entitet.KoeficijentRadnogMjesta;
 
-                _context.Radnici.Update(RadnikIzBaze);
+                _context.Radnici.Update(entitetIzBaze);
                 _context.SaveChanges();
 
-                return StatusCode(StatusCodes.Status200OK, RadnikIzBaze);
+                return StatusCode(StatusCodes.Status200OK, entitetIzBaze);
             }
             catch (Exception ex)
             {
@@ -195,14 +197,14 @@ namespace WebApi_ZavrsniRad.Controllers
 
             try
             {
-                var RadnikIzbaze = _context.Radnici.Find(sifra);
+                var entitetIzbaze = _context.Radnici.Find(sifra);
 
-                if (RadnikIzbaze == null)
+                if (entitetIzbaze == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, sifra);
                 }
 
-                _context.Radnici.Remove(RadnikIzbaze);
+                _context.Radnici.Remove(entitetIzbaze);
                 _context.SaveChanges();
 
                 return new JsonResult(new { poruka = "Obrisano" });
@@ -217,3 +219,7 @@ namespace WebApi_ZavrsniRad.Controllers
         }
     }
 }
+
+
+//OVO JE  KOD ZA ZAMJENU S ENTITETOM
+
