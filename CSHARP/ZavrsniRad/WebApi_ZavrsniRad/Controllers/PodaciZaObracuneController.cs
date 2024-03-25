@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi_ZavrsniRad.Data;
 using WebApi_ZavrsniRad.Models;
 
@@ -44,7 +45,10 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var podacizaobracun = _context.PodaciZaObracune.ToList();
+                var podacizaobracun = _context.PodaciZaObracune
+                    .Include(o => o.Obracun)
+                    .Include(r => r.Radnik)
+                    .ToList();
                 if(podacizaobracun==null || podacizaobracun.Count == 0)
                 {
                     return new EmptyResult();
@@ -114,6 +118,8 @@ namespace WebApi_ZavrsniRad.Controllers
                     ex.Message);
             }
         }
+
+
 
         
 

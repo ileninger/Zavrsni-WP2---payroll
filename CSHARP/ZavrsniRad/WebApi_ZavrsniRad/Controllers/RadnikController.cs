@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi_ZavrsniRad.Data;
+using WebApi_ZavrsniRad.Extensions;
 using WebApi_ZavrsniRad.Models;
 
 namespace WebApi_ZavrsniRad.Controllers
@@ -49,7 +50,7 @@ namespace WebApi_ZavrsniRad.Controllers
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(radnici);
+                return new JsonResult(radnici.MapRadnikReadList());
             }catch(Exception ex)
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
