@@ -11,7 +11,7 @@ namespace WebApi_ZavrsniRad.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class RadnikController:ControllerBase
+    public class RadnikController : ControllerBase
     {
         /// <summary>
         /// Kontekst za rad s bazom koji  će biti postavljen s pomoću Dependecy Injection-om
@@ -36,9 +36,9 @@ namespace WebApi_ZavrsniRad.Controllers
         /// <response code="200">Sve OK </response>
         /// <response code="400">Zahtjev nije valjan</response>
         [HttpGet]
-        public IActionResult Get ()
+        public IActionResult Get()
         {
-            
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -46,12 +46,13 @@ namespace WebApi_ZavrsniRad.Controllers
             try
             {
                 var radnici = _context.Radnici.ToList();
-                if(radnici==null || radnici.Count == 0)
+                if (radnici == null || radnici.Count == 0)
                 {
                     return new EmptyResult();
                 }
                 return new JsonResult(radnici.MapRadnikReadList());
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }

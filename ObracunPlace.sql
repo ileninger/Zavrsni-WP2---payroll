@@ -56,6 +56,7 @@ create table PodaciZaObracune (
 
 create table Obracuni(
       Sifra int not null primary key identity (1,1),
+	 Obracun int not null
       DatumObracuna date not null,
       Bruto_I decimal (18,2),
       Bruto_II decimal (18,2),

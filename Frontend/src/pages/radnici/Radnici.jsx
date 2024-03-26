@@ -69,10 +69,9 @@ export default function Radnici (){
                         <tr key={index}>
                             <td className="lijevo">{radnik.ime}</td>
                             <td className="lijevo">{radnik.prezime}</td>
-                            <td className="sredina">{radnik.oiB}</td>
+                            <td className="sredina">{radnik.oib}</td>
                             <td className="sredina">
                             {
-                                radnik.datumZaposlenja==null?'Nije uneseno':
                                 moment.utc(radnik.datumZaposlenja).format('DD.MM.YYYY.')
                             }
                             </td>
@@ -80,12 +79,12 @@ export default function Radnici (){
 
 
                             
-                            <td className={radnik.cijenaRadnogSata==null ? 'sredina' : 'sredina'}>
-                                {radnik.cijenaRadnogSata==null 
+                            <td className={radnik.cijenaradnogsata==null ? 'sredina' : 'sredina'}>
+                                {radnik.cijenaradnogsata==null 
                                 ? 'Nije definirano'
                                 :
                                     <NumericFormat 
-                                    value={radnik.cijenaRadnogSata}
+                                    value={radnik.cijenaradnogsata}
                                     displayType={'text'}
                                     thousandSeparator='.'
                                     decimalSeparator=','
@@ -97,7 +96,7 @@ export default function Radnici (){
                             </td>                                     
                             <td className="sredina" >
                             <NumericFormat 
-                                    value={radnik.koeficijentRadnogMjesta}
+                                    value={radnik.koeficijentradnogmjesta}
                                     displayType={'text'}
                                     thousandSeparator='.'
                                     decimalSeparator=','

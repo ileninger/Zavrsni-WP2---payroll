@@ -15,5 +15,11 @@ namespace WebApi_ZavrsniRad.Extensions
             });
             return vrati;
         }
+
+        public static RadnikDTORead MapRadnikRead(this Radnik entitet)
+        {
+            var mapper = RadnikMapper.InicijalizirajRead();
+            return mapper.Map<RadnikDTORead>(entitet);
+        }
     }
 }
