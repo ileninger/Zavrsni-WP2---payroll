@@ -8,11 +8,6 @@ namespace WebApi_ZavrsniRad.Models
     public class PodaciZaObracune:Entitet
     {
 
-        [ForeignKey("radnik")] // ovo pod navodnicima je naziv kolone u tablici grupa
-        public Radnik? Radnik { get; set; }
-
-        [ForeignKey("obracun")]
-        public Obracun? Obracun{ get; set; }
         //[Required(ErrorMessage = "Broj radnih sati koje je radnik odradio u razdoblju obračuna je obavezan")]
         public int? BrojRadnihSati { get; set; }
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApi_ZavrsniRad.Data;
+using WebApi_ZavrsniRad.Extensions;
 using WebApi_ZavrsniRad.Models;
 
 namespace WebApi_ZavrsniRad.Controllers
@@ -36,25 +36,23 @@ namespace WebApi_ZavrsniRad.Controllers
         /// <response code="200">Sve OK </response>
         /// <response code="400">Zahtjev nije valjan</response>
         [HttpGet]
-        public IActionResult Get ()
+        public IActionResult Get()
         {
-            
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             try
             {
-                var podacizaobracun = _context.PodaciZaObracune
-                    .Include(o => o.Obracun)
-                    .Include(r => r.Radnik)
-                    .ToList();
-                if(podacizaobracun==null || podacizaobracun.Count == 0)
+                var radnici = _context.PodaciZaObracune.ToList();
+                if (radnici == null || radnici.Count == 0)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(podacizaobracun);
-            }catch(Exception ex)
+                return new JsonResult(radnici);
+            }
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
@@ -71,12 +69,12 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var podacizaobracun = _context.PodaciZaObracune.ToList();
-                if (podacizaobracun == null)
+                var podacizaobracune = _context.PodaciZaObracune.Find(sifra);
+                if (podacizaobracune == null)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(podacizaobracun);
+                return new JsonResult(podacizaobracune);
             }
             catch (Exception ex)
             {
@@ -118,12 +116,71 @@ namespace WebApi_ZavrsniRad.Controllers
                     ex.Message);
             }
         }
+        /// <summary>
+        /// Mijenja podatke postojećeg radnika u bazi
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    PUT api/v1/radnik/1
+        ///
+        /// {
+        ///  "sifra": 0,
+        ///  "ime": "Novo ime",
+        ///  "prezime": "Novo prezime",
+        ///  "Datum zaposlenja": 01.01.2022.,
+        ///  "OiB": "74203150129",
+        ///  "Iban ": "HR"
+        /// }
+        ///
+        /// </remarks>
+        /// <param name="sifra">Šifra smjera koji se mijenja</param>  
+        /// <param name="smjer">Smjer za unijeti u JSON formatu</param>  
+        /// <returns>Svi poslani podaci od smjera koji su spremljeni u bazi</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="204">Nema u bazi smjera kojeg želimo promijeniti</response>
+        /// <response code="415">Nismo poslali JSON</response> 
+        /// <response code="503">Baza nedostupna</response> 
+
+        [HttpPut]
+        [Route("{sifra:int}")]
+        public IActionResult Put(int sifra, PodaciZaObracune entitet)
+        {
+            if (sifra <= 0 || !ModelState.IsValid || entitet == null)
+            {
+                return BadRequest();
+            }
+
+
+            try
+            {
+
+
+                var entitetIzBaze = _context.PodaciZaObracune.Find(sifra);
+
+
+                if (entitetIzBaze == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent, sifra);
+                }
 
 
 
-        
+                // inače ovo rade mapperi
+                // za sada ručno
+                entitetIzBaze.BrojRadnihSati = entitet.BrojRadnihSati;
 
+                _context.PodaciZaObracune.Update(entitetIzBaze);
+                _context.SaveChanges();
 
+                return StatusCode(StatusCodes.Status200OK, entitetIzBaze);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    ex.Message);
+            }
+        }
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
