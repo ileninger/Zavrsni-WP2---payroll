@@ -7,6 +7,7 @@ import { FaAddressCard, FaSearch } from "react-icons/fa";
 //import { FaEdit } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { FaUserMinus } from "react-icons/fa6";
+import { BiSolidUserDetail } from "react-icons/bi";
 
 import { RoutesNames } from "../../constants";
 import moment from "moment/moment";
@@ -57,10 +58,11 @@ export default function RadniciPregled (){
                         <th>Ime</th>
                         <th>Prezime</th>
                         <th className="sredina">OiB</th>
-                        <th className="sredina">Datumzaposlenja</th>
+                        <th className="sredina"></th>
+                        {/* <th className="sredina">Datumzaposlenja</th>
                         <th className="sredina">IBAN</th>
                         <th className="sredina">Cijena radnog sata</th>
-                        <th className="sredina">Koeficijent radnog mjesta</th>
+                        <th className="sredina">Koeficijent radnog mjesta</th> */}
                         <th className="sredina">Akcija</th>
                     </tr>
                 </thead>
@@ -71,6 +73,18 @@ export default function RadniciPregled (){
                             <td className="lijevo">{radnik.prezime}</td>
                             <td className="sredina">{radnik.oib}</td>
                             <td className="sredina">
+                                <Button
+                                    variant="normal"
+                                    onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}>
+                                    <BiSolidUserDetail  
+                                     color="blue"
+                                    
+                                    size={25} />
+                                    Detaljnije
+                                </Button>
+                            </td>
+                            
+                            {/* <td className="sredina">
                             {
                                 moment.utc(radnik.datumZaposlenja).format('DD.MM.YYYY.')
                             }
@@ -103,7 +117,7 @@ export default function RadniciPregled (){
                                     decimalScale={2}
                                     fixedDecimalScale
                                     />
-                            </td>
+                            </td> */}
                             <td className="sredina">
                                 <Button
                                     variant="normal"

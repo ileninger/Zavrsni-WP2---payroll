@@ -16,22 +16,19 @@ namespace WebApi_ZavrsniRad.Models
         /// <summary>
         /// Postotak koji se odvaja za prvi mirovinski stup
         /// </summary>
-        public decimal? UdioZaPrviMirovinskiStup { get; set; }
+        public decimal? PostotakZaPrviMirovinskiStup { get; set; }
 
         /// <summary>
         /// Postotak koji se odvaja za drugi mirovinski stup
         /// </summary>
-        public decimal? UdioZaDrugiMirovinskiStup { get; set; }
+        public decimal? PostotakZaDrugiMirovinskiStup { get; set; }
 
         /// <summary>
         /// Postotak poreza na dohodak
         /// </summary>
-        public decimal? PorezNaDohodak { get; set; }
+        public decimal? StopaPorezaNaDohodak { get; set; }
 
-        /// <summary>
-        /// Porezna osnovica
-        /// </summary>
-        public decimal? PoreznaOsnovica { get; set; }
+  
 
 
     }

@@ -20,6 +20,11 @@ namespace WebApi_ZavrsniRad.Models
         //BrurtoII = BrutoI - (MIO I + MIO II) - služi kao porezna osnovica
         public decimal? Bruto_II { get; set; }
 
+        /// <summary>
+        /// Porezna osnovica
+        /// </summary>
+        public decimal? PoreznaOsnovica { get; set; }
+
         public decimal? NetoIznosZaIsplatu { get; set; }
 
 

@@ -37,27 +37,31 @@ create table  Radnici(
 );
 create table PodaciZaObracune (
 	Sifra int not null primary key identity (1,1),
-	Radnik int not null,
-	Obracun int not null,
-	BrojRadnihSati int not null,
-	OsnovniOsobniOdbitak decimal (18,2) not null,
-    UdioZaPrviMirovinskiStup decimal (18,2) not null,
-    UdioZaDrugiMirovinskiStup decimal (18,2) not null,
-    PorezNaDohodak decimal (18,2) not null,
-    PoreznaOsnovica decimal (18,2) not null,
+	Naziv varchar(250),
+	OsnovniOsobniOdbitak decimal (18,2),
+    UdioZaPrviMirovinskiStup decimal (18,2),
+    UdioZaDrugiMirovinskiStup decimal (18,2),
+    PorezNaDohodak decimal (18,2),
+    PoreznaOsnovica decimal (18,2),
 );
 
 
  create table Place (
       Sifra int not null primary key identity (1,1),
-	  Obracun int not null,
       NazivPlace varchar (50),
+     BrojRadnihSati int not null,
+	 DatumPocetkaPlace date,
+	 DatumKrajaPlace date,
+	 
 );
 
 create table Obracuni(
       Sifra int not null primary key identity (1,1),
-	 Obracun int not null
-      DatumObracuna date not null,
+	 Radnik int,
+	 PodaciZaObracun int,
+	 Placa int,
+	 Naziv varchar(250),
+      DatumObracuna date,
       Bruto_I decimal (18,2),
       Bruto_II decimal (18,2),
       NetoIznosZaIsplatu decimal (18,2)
@@ -73,7 +77,9 @@ create table Administratori (
 
 
 
-alter table PodaciZaObracun add foreign key (Radnik) references Radnici(Sifra);
-alter table PodaciZaObracun add foreign key (Obracun) references Obracuni(Sifra);
-alter table Place add foreign key (Obracun) references Obracuni(Sifra);
+alter table Obracuni add foreign key (Radnik) references Radnici(Sifra);
+alter table Obracuni add foreign key (PodaciZaObracun) references PodaciZaObracune(Sifra);
+alter table Obracuni add foreign key (Placa) references Place(Sifra);
+
+
 

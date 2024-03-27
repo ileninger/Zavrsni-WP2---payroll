@@ -170,10 +170,9 @@ namespace WebApi_ZavrsniRad.Controllers
                 // za sada ručno
                 //entitetIzBaze.BrojRadnihSati = entitet.BrojRadnihSati;
                 entitetIzBaze.OsnovniOsobniOdbitak = entitet.OsnovniOsobniOdbitak;
-                entitetIzBaze.PoreznaOsnovica = entitet.PoreznaOsnovica;
-                entitetIzBaze.PorezNaDohodak = entitet.PorezNaDohodak;
-                entitetIzBaze.UdioZaPrviMirovinskiStup = entitet.UdioZaPrviMirovinskiStup;
-                entitetIzBaze.UdioZaDrugiMirovinskiStup = entitet.UdioZaDrugiMirovinskiStup;
+                entitetIzBaze.StopaPorezaNaDohodak = entitet.StopaPorezaNaDohodak;
+                entitetIzBaze.PostotakZaPrviMirovinskiStup = entitet.PostotakZaPrviMirovinskiStup;
+                entitetIzBaze.PostotakZaDrugiMirovinskiStup = entitet.PostotakZaDrugiMirovinskiStup;
 
                 _context.PodaciZaObracune.Update(entitetIzBaze);
                 _context.SaveChanges();

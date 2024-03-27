@@ -8,5 +8,7 @@ namespace WebApi_ZavrsniRad.Models
 
         //[Required(ErrorMessage = "Broj radnih sati koje je radnik odradio u razdoblju obračuna je obavezan")]
         public int? BrojRadnihSati { get; set; }
+
+        
     }
 }

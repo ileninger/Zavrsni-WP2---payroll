@@ -22,15 +22,34 @@ function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+            <NavDropdown title="Plače" id="basic-nav-dropdown">
+              <NavDropdown.Item>Izradin novu plaču </NavDropdown.Item>
+              <NavDropdown.Item>Prikaži plače</NavDropdown.Item>
+
+            </NavDropdown>
+          </Nav>
           <Nav className="me-auto">
-            <NavDropdown title="Izbornik" id="basic-nav-dropdown">
+            <NavDropdown title="Radnici" id="basic-nav-dropdown">
               <NavDropdown.Item 
                 onClick={()=>navigate(RoutesNames.RADNICI_PREGLED)}
               >
-                Radnici
+                Pregled radnika
+            </NavDropdown.Item>
+              <NavDropdown.Item
+              onClick={()=>navigate(RoutesNames.RADNICI_DODAJ)}
+              >Dodaj novog radnika</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav className="me-auto">
+            <NavDropdown title="Obračuni" id="basic-nav-dropdown">
+            <NavDropdown.Item>Novi obračun</NavDropdown.Item>
+              <NavDropdown.Item 
+                onClick={()=>navigate(RoutesNames.PODACIZAOBRACUNE_PREGLED)}
+              >
+                Pregled podataka za odbitke
             </NavDropdown.Item>
               <NavDropdown.Item>Obračuni</NavDropdown.Item>
-              <NavDropdown.Item>Plače</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

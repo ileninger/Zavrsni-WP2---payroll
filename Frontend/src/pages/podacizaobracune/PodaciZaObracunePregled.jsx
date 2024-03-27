@@ -57,7 +57,6 @@ export default function PodaciZaObracunePregled (){
                 <thead>
                     <tr>
 
-                        <th className="sredina">Porezna osnovica</th>
                         <th className="sredina">Osnovni osobni odbitak</th>
                         <th className="sredina">Udio za prvi mirovinski stup</th>
                         <th className="sredina">Udio za drugi mirovinski stup</th>
@@ -69,21 +68,6 @@ export default function PodaciZaObracunePregled (){
                     {podacizaobracune && podacizaobracune.map((podacizaobracune,index)=>(
                         <tr key={index}>
 
-                            <td className={podacizaobracune.poreznaOsnovica==null ? 'sredina' : 'sredina'}>
-                                {podacizaobracune.poreznaOsnovica==null 
-                                ? 'Nije definirano'
-                                :
-                                    <NumericFormat 
-                                    value={podacizaobracune.poreznaOsnovica}
-                                    displayType={'text'}
-                                    thousandSeparator='.'
-                                    decimalSeparator=','
-                                    prefix={'€'}
-                                    decimalScale={2}
-                                    fixedDecimalScale
-                                    />
-                                } 
-                            </td>
                             <td className={podacizaobracune.osnovniOsobniOdbitak==null ? 'sredina' : 'sredina'}>
                                 {podacizaobracune.osnovniOsobniOdbitak==null 
                                 ? 'Nije definirano'
@@ -99,12 +83,12 @@ export default function PodaciZaObracunePregled (){
                                     />
                                 } 
                             </td>
-                            <td className={podacizaobracune.udioZaPrviMirovinskiStup==null ? 'sredina' : 'sredina'}>
-                                {podacizaobracune.udioZaPrviMirovinskiStup==null 
+                            <td className={podacizaobracune.postotakZaPrviMirovinskiStup==null ? 'sredina' : 'sredina'}>
+                                {podacizaobracune.postotakZaPrviMirovinskiStup==null 
                                 ? 'Nije definirano'
                                 :
                                     <NumericFormat 
-                                    value={podacizaobracune.udioZaPrviMirovinskiStup}
+                                    value={podacizaobracune.postotakZaPrviMirovinskiStup}
                                     displayType={'text'}
                                     thousandSeparator='.'
                                     decimalSeparator=','
@@ -114,12 +98,12 @@ export default function PodaciZaObracunePregled (){
                                     />
                                 } 
                             </td>
-                            <td className={podacizaobracune.udioZaDrugiMirovinskiStup==null ? 'sredina' : 'sredina'}>
-                                {podacizaobracune.udioZaDrugiMirovinskiStup==null 
+                            <td className={podacizaobracune.postotakZaDrugiMirovinskiStup==null ? 'sredina' : 'sredina'}>
+                                {podacizaobracune.postotakZaDrugiMirovinskiStup==null 
                                 ? 'Nije definirano'
                                 :
                                     <NumericFormat 
-                                    value={podacizaobracune.udioZaDrugiMirovinskiStup}
+                                    value={podacizaobracune.postotakZaDrugiMirovinskiStup}
                                     displayType={'text'}
                                     thousandSeparator='.'
                                     decimalSeparator=','
@@ -129,12 +113,12 @@ export default function PodaciZaObracunePregled (){
                                     />
                                 } 
                             </td>
-                            <td className={podacizaobracune.porezNaDohodak==null ? 'sredina' : 'sredina'}>
-                                {podacizaobracune.porezNaDohodak==null 
+                            <td className={podacizaobracune.stopaPorezaNaDohodak==null ? 'sredina' : 'sredina'}>
+                                {podacizaobracune.stopaPorezaNaDohodak==null 
                                 ? 'Nije definirano'
                                 :
                                     <NumericFormat 
-                                    value={podacizaobracune.porezNaDohodak}
+                                    value={podacizaobracune.stopaPorezaNaDohodak}
                                     displayType={'text'}
                                     thousandSeparator='.'
                                     decimalSeparator=','
