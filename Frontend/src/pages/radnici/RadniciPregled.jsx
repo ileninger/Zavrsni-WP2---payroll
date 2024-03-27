@@ -12,7 +12,7 @@ import { RoutesNames } from "../../constants";
 import moment from "moment/moment";
 
 
-export default function Radnici (){
+export default function RadniciPregled (){
 
     const [radnici,setRadnici] = useState ();
     const navigate = useNavigate();
