@@ -11,7 +11,7 @@ namespace WebApi_ZavrsniRad.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class PodaciZaObracuneController : ControllerBase
+    public class PlacaController : ControllerBase
     {
         /// <summary>
         /// Kontekst za rad s bazom koji  će biti postavljen s pomoću Dependecy Injection-om
@@ -21,7 +21,7 @@ namespace WebApi_ZavrsniRad.Controllers
         /// Konstruktor klase koja prima Radnik kontext pomoću DI principa
         /// </summary>
         /// <param name="context"></param>
-        public PodaciZaObracuneController(ObracunPlacaContext context)
+        public PlacaController(ObracunPlacaContext context)
         {
             _context = context;
         }
@@ -45,12 +45,12 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var radnici = _context.PodaciZaObracune.ToList();
-                if (radnici == null || radnici.Count == 0)
+                var place = _context.Place.ToList();
+                if (place == null || place.Count == 0)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(radnici);
+                return new JsonResult(place);
             }
             catch (Exception ex)
             {
@@ -69,12 +69,12 @@ namespace WebApi_ZavrsniRad.Controllers
             }
             try
             {
-                var podacizaobracune = _context.PodaciZaObracune.Find(sifra);
-                if (podacizaobracune == null)
+                var place = _context.Place.Find(sifra);
+                if (place == null)
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(podacizaobracune);
+                return new JsonResult(place);
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace WebApi_ZavrsniRad.Controllers
         /// <response code="503">Baza nedostupna iz razno raznih razloga</response> 
         /// <returns>Smjer s šifrom koju je dala baza</returns>
         [HttpPost]
-        public IActionResult Post(PodaciZaObracune entitet)
+        public IActionResult Post(Placa entitet)
         {
             if (!ModelState.IsValid || entitet == null)
             {
@@ -106,7 +106,7 @@ namespace WebApi_ZavrsniRad.Controllers
             try
             {
 
-                _context.PodaciZaObracune.Add(entitet);
+                _context.Place.Add(entitet);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, entitet);
             }
@@ -144,7 +144,7 @@ namespace WebApi_ZavrsniRad.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, PodaciZaObracune entitet)
+        public IActionResult Put(int sifra, Placa entitet)
         {
             if (sifra <= 0 || !ModelState.IsValid || entitet == null)
             {
@@ -156,7 +156,7 @@ namespace WebApi_ZavrsniRad.Controllers
             {
 
 
-                var entitetIzBaze = _context.PodaciZaObracune.Find(sifra);
+                var entitetIzBaze = _context.Place.Find(sifra);
 
 
                 if (entitetIzBaze == null)
@@ -168,14 +168,11 @@ namespace WebApi_ZavrsniRad.Controllers
 
                 // inače ovo rade mapperi
                 // za sada ručno
-                //entitetIzBaze.BrojRadnihSati = entitet.BrojRadnihSati;
-                entitetIzBaze.OsnovniOsobniOdbitak = entitet.OsnovniOsobniOdbitak;
-                entitetIzBaze.PoreznaOsnovica = entitet.PoreznaOsnovica;
-                entitetIzBaze.PorezNaDohodak = entitet.PorezNaDohodak;
-                entitetIzBaze.UdioZaPrviMirovinskiStup = entitet.UdioZaPrviMirovinskiStup;
-                entitetIzBaze.UdioZaDrugiMirovinskiStup = entitet.UdioZaDrugiMirovinskiStup;
+                entitetIzBaze.NazivPlace = entitet.NazivPlace;
+                entitetIzBaze.BrojRadnihSati = entitet.BrojRadnihSati;
 
-                _context.PodaciZaObracune.Update(entitetIzBaze);
+
+                _context.Place.Update(entitetIzBaze);
                 _context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, entitetIzBaze);
@@ -198,14 +195,14 @@ namespace WebApi_ZavrsniRad.Controllers
 
             try
             {
-                var entitetIzbaze = _context.PodaciZaObracune.Find(sifra);
+                var entitetIzbaze = _context.Place.Find(sifra);
 
                 if (entitetIzbaze == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, sifra);
                 }
 
-                _context.PodaciZaObracune.Remove(entitetIzbaze);
+                _context.Place.Remove(entitetIzbaze);
                 _context.SaveChanges();
 
                 return new JsonResult(new { poruka = "Obrisano" });

@@ -8,8 +8,7 @@ namespace WebApi_ZavrsniRad.Models
     public class PodaciZaObracune:Entitet
     {
 
-        //[Required(ErrorMessage = "Broj radnih sati koje je radnik odradio u razdoblju obračuna je obavezan")]
-        public int? BrojRadnihSati { get; set; }
+
         /// <summary>
         /// Osnovni osobni odbitak
         /// </summary>
