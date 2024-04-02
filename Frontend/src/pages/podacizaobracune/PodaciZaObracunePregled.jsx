@@ -28,7 +28,7 @@ export default function PodaciZaObracunePregled (){
         });
     } 
 
-    async function obrisiRadnika(sifra){
+    async function obrisiPodatkeZaObracun(sifra){
 
         const odgovor = await PodaciZaObracuneService.obrisiPodatkeZaObracune(sifra);
         if (odgovor.ok){
@@ -132,7 +132,7 @@ export default function PodaciZaObracunePregled (){
                             <td className="sredina">
                                 <Button
                                     variant="normal"
-                                    //</Button></td>onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}
+                                    onClick={()=>{navigate(`/PodaciZaObracune/${podacizaobracune.sifra}`)}}
                                     >
                                     <FaUserEdit 
                                      color="blue"
@@ -142,7 +142,7 @@ export default function PodaciZaObracunePregled (){
                                      &nbsp;&nbsp;&nbsp;
                                 <Button
                                     variant="normal"
-                                    //onClick={()=>obrisiRadnika(radnik.sifra)}
+                                    onClick={()=>obrisiPodatkeZaObracun(podacizaobracune.sifra)}
                                 >
        
                                     <FaUserMinus 

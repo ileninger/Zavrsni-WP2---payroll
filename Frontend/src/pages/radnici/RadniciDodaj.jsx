@@ -38,33 +38,7 @@ export default function RadniciDodaj (){
           dodajRadnika(radnik);
 
     }
-
-
-
-    // function handleSubmit(e)
-    // {
-    //     e.preventDefault();
-    //     const podaci = new FormData(e.target);
-    //     console.log(podaci.get('ime'));
-
-    //     const radnik = 
-    //     {
-    //         ime: podaci.get('ime'),
-    //         prezime: podaci.get('prezime'),
-    //         oiB: podaci.get('oib'),
-    //         datumZaposlenja: podaci.get('datumzaposlenja'),
-    //         iban: podaci.get('iban'),
-    //     };
-
-    //     console.log(JSON.stringify(radnik));
-
-    // }
-
-    
-
-
-
-    
+   
     return (
         <Container>
             <Form onSubmit={handleSubmit}>

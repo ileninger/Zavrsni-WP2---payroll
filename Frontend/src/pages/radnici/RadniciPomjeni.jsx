@@ -45,7 +45,7 @@ export default function RadniciPomjeni (){
         {
             ime: podaci.get('ime'),
             prezime: podaci.get('prezime'),
-            oiB: podaci.get('oib'),
+            oib: podaci.get('oib'),
             datumZaposlenja: podaci.get('datumzaposlenja'),
             iban: podaci.get('iban'),
             cijenaRadnogSata:parseFloat(podaci.get('cijenaRadnogSata')),
@@ -80,14 +80,14 @@ export default function RadniciPomjeni (){
                     <Form.Label>OiB</Form.Label>
                     <Form.Control 
                         type="text"
-                        defaultValue={radnik.oiB}
+                        defaultValue={radnik.oib}
                         name="oib"/>
                 </Form.Group>
                 <Form.Group controlId="datumzaposlenja">
                     <Form.Label>DatumZaposlenja</Form.Label>
                     <Form.Control 
                         type="text"
-                        defaultValue={radnik.datumZaposlenja}
+                        defaultValue={radnik.datumzaposlenja}
                         name="datumzaposlenja"/>
                 </Form.Group>
                 <Form.Group controlId="iban">
@@ -101,7 +101,7 @@ export default function RadniciPomjeni (){
                     <Form.Label>Cijena radnog sata</Form.Label>
                     <Form.Control 
                         type="text"
-                        defaultValue={radnik.cijenaRadnogSata}
+                        defaultValue={radnik.cijenaradnogsata}
                         name="cijenaRadnogSata"
                         placeholder='Cijena radnog sata'
                     />
@@ -110,7 +110,7 @@ export default function RadniciPomjeni (){
                     <Form.Label>Koeficijent radnog mjesta </Form.Label>
                     <Form.Control 
                         type="text"
-                        defaultValue={radnik.koeficijentRadnogMjesta}
+                        defaultValue={radnik.koeficijentradnogmjesta}
                         name="koeficijentRadnogMjesta"
                         placeholder='Koeficijent radnog mjesta'
                         

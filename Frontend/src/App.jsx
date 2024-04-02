@@ -11,6 +11,8 @@ import RadniciPomjeni from "./pages/radnici/RadniciPomjeni"
 import RadniciPregled from "./pages/radnici/RadniciPregled"
 
 import PodaciZaObracunePregled from "./pages/podacizaobracune/PodaciZaObracunePregled"
+import PodaciZaObracuneDodaj from "./pages/podacizaobracune/PodaciZaObracuneDodaj"
+import PodaciZaObracunePromjeni from "./pages/podacizaobracune/PodaciZaObracunePromjeni"
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
         <Route path={RoutesNames.RADNICI_PROMJENI} element ={<RadniciPomjeni/>} />
 
         <Route path={RoutesNames.PODACIZAOBRACUNE_PREGLED} element ={<PodaciZaObracunePregled/>} />
+        <Route path={RoutesNames.PODACIZAOBRACUNE_DODAJ} element ={<PodaciZaObracuneDodaj/>} />
+        <Route path={RoutesNames.PODACIZAOBRACUNE_PROMJENI} element ={<PodaciZaObracunePromjeni/>} />
 
 
       </Routes>

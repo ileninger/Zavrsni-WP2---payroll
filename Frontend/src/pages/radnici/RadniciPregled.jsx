@@ -63,7 +63,7 @@ export default function RadniciPregled (){
                         <th className="sredina">IBAN</th>
                         <th className="sredina">Cijena radnog sata</th>
                         <th className="sredina">Koeficijent radnog mjesta</th> */}
-                        {/* <th className="sredina">Akcija</th> */}
+                        <th className="sredina">Akcija</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,7 +118,7 @@ export default function RadniciPregled (){
                                     fixedDecimalScale
                                     />
                             </td> */}
-                            {/* <td className="sredina">
+                            <td className="sredina">
                                 <Button
                                     variant="normal"
                                     onClick={()=>{navigate(`/radnici/${radnik.sifra}`)}}>
@@ -138,7 +138,7 @@ export default function RadniciPregled (){
                                     color="red" 
                                     />
                                 </Button>
-                            </td> */}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

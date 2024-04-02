@@ -42,14 +42,16 @@ function NavBar() {
             </NavDropdown>
           </Nav>
           <Nav className="me-auto">
-            <NavDropdown title="Obračuni" id="basic-nav-dropdown">
-            <NavDropdown.Item>Novi obračun</NavDropdown.Item>
+            <NavDropdown title="Odbici" id="basic-nav-dropdown">
               <NavDropdown.Item 
                 onClick={()=>navigate(RoutesNames.PODACIZAOBRACUNE_PREGLED)}
               >
-                Pregled podataka za odbitke
+                Pregled podataka za proračun odbitaka
             </NavDropdown.Item>
-              <NavDropdown.Item>Obračuni</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={()=>navigate(RoutesNames.PODACIZAOBRACUNE_DODAJ)}
+              
+              >Dodaj nove podatake za proračun odbitaka</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
